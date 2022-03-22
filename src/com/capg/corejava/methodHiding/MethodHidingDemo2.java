@@ -1,7 +1,7 @@
 package com.capg.corejava.methodHiding;
 
 // overridden method -> non-static, overridding method -> static
-// hence error -> This static method from child cannot override the instance method from ParentClass.
+// hence error -> This static method from ChildClass cannot override the instance method from ParentClass.
 class ParentClass {
 	// object level method/instance method
 	public void display() {

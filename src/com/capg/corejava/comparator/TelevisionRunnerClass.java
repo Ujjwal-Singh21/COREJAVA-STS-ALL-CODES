@@ -9,16 +9,20 @@ public class TelevisionRunnerClass {
 
 	public static void main(String[] args) {
 
-		List<Television> list = new ArrayList<Television>();
-		list.add(new Television("LG", 33000, 2010));
-		list.add(new Television("SONY", 13000, 2015));
-		list.add(new Television("ONEPLUS", 88000, 2021));
+		List<Television> tvList = new ArrayList<Television>();
+		
+		tvList.add(new Television("LG", 33000, 2010));
+		tvList.add(new Television("SONY", 13000, 2015));
+		tvList.add(new Television("ONEPLUS", 88000, 2021));
 
 		Comparator<Television> comparator = new Comparator<Television>() {
 
+			// Overridden Comparator's Interface compare() method for comparison.
 			@Override
-			public int compare(Television o1, Television o2) { // comparator method for comparison
-				if (o1.getPrice() > o2.getPrice()) // logic to sort
+			public int compare(Television o1, Television o2) {
+
+				// logic to sort
+				if (o1.getPrice() > o2.getPrice())
 					return 1;
 
 				else
@@ -26,9 +30,10 @@ public class TelevisionRunnerClass {
 			}
 		};
 
-		Collections.sort(list, comparator); // sort method from collections class to sort
+	   // sort method from Collections class to sort
+		Collections.sort(tvList, comparator); 
 
-		for (Television t : list) {
+		for (Television t : tvList) {
 			System.out.println(t);
 		}
 	}

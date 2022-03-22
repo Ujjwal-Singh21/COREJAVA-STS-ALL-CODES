@@ -1,5 +1,6 @@
 package com.capg.corejava.comparator;
 
+//use comparator if u want to perform sorting on your own logic and parameters.
 public class SmartPhone {
 
 	private int ram;
@@ -7,7 +8,6 @@ public class SmartPhone {
 	private double price;
 
 	public SmartPhone(int ram, String model, double price) {
-		super();
 		this.ram = ram;
 		this.model = model;
 		this.price = price;
@@ -18,24 +18,12 @@ public class SmartPhone {
 		return ram;
 	}
 
-	public void setRam(int ram) {
-		this.ram = ram;
-	}
-
 	public String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) {
-		this.model = model;
-	}
-
 	public double getPrice() {
 		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	@Override

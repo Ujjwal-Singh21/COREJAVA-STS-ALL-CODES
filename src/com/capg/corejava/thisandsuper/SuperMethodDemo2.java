@@ -32,12 +32,12 @@ public class SuperMethodDemo2 {
 	public static void main(String[] args) {
 
 		// Normal -> A, then -> A then B
-//		ClassA a1 = new ClassA();
-//		ClassB b1 = new ClassB();
+		ClassA a1 = new ClassA();
+		ClassB b1 = new ClassB();
 
 		// Calling the parameterized constructor
 		// output -> Class A int, then -> Class A constructor, Class B int
-//		ClassA a2 = new ClassA(5);
+		ClassA a2 = new ClassA(5);
 		ClassB b2 = new ClassB(5);
 	}
 

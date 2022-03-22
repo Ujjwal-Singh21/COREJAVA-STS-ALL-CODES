@@ -10,22 +10,14 @@ public class Demo {
 
 	public static void main(String[] args) {
 
-		Function<String, Integer> function = new Function<String, Integer>() {
+		int a = 10;
+		int b = 10;
 
-			@Override
-			public Integer apply(String t) {
-
-				return t.length();
-			}
-
-		};
-		System.out.println(function.apply("Yamini"));
-
-		// lambda
-
-		Function<String, Integer> function1 = t -> t.length();
-
-		System.out.println(function1.apply("Ujjwal"));
+		if (a == b) {
+			System.out.println("Hi");
+		} else {
+			System.out.println(" Bye");
+		}
 
 	}
 

@@ -37,12 +37,12 @@ public class LearnMap {
 			System.out.println(e.getValue());
 		}
 
-		//FOR GETTING SET OF ALL KEYS 
+		// FOR GETTING SET OF ALL KEYS
 		for (String key : numbers.keySet()) {
 			System.out.println(key);
 		}
 
-		//FOR GETTING LIST OF ALL VALUES
+		// FOR GETTING LIST OF ALL VALUES
 		for (Integer value : numbers.values()) {
 			System.out.println(value);
 		}

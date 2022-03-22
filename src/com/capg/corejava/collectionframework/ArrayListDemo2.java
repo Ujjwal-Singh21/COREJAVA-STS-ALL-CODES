@@ -2,31 +2,26 @@ package com.capg.corejava.collectionframework;
 
 import java.util.ArrayList;
 
-// WITH GENERICS PLUS ANOTHER WAY OF DECLARATION
-
+// WITHOUT GENERICS
 import java.util.Iterator;
-
 public class ArrayListDemo2 {
 
 	public static void main(String[] args) {
-		ArrayList<String> mylist = new ArrayList<String>();
+		ArrayList mylist = new ArrayList();
+		mylist.add(10);
+		mylist.add(10);
+		mylist.add(45.5);
 		mylist.add("Ujjwal");
-		mylist.add("Rushil");
-		mylist.add("Prem");
-		mylist.add("Sanjeevi");
+		mylist.add(10);
 		System.out.println(mylist);
 		
-		// using iterator
-		  Iterator i1 = mylist.iterator(); 
-		  while (i1.hasNext()) //has next element? 
-		  {
-		  System.out.println(i1.next());
-		   }
-		 
-		// for generics, for each advanced loop is best
-		for (String i : mylist) 
+		//USING ITERATOR 
+		Iterator i1 = mylist.iterator();
+		while (i1.hasNext()) //has next element?
 		{
-			System.out.println(i);
+			System.out.println(i1.next());
 		}
 	}
+
 }
+

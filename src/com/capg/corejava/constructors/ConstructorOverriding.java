@@ -22,7 +22,7 @@ public class ConstructorOverriding {
 //		Parent parent = new Parent();
 
 		// Error -> says The constructor Child() is undefined.
-		// This rpoves that no-arg constructor from parent class in not inherited and not available to child class.
+		// This proves that no-arg constructor from parent class in not inherited and not available to child class.
 		// Hence constructor does not support Overriding concept.
 		Child child = new Child();
 

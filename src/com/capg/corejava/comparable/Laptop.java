@@ -7,34 +7,22 @@ public class Laptop implements Comparable<Laptop> {
 	private int price;
 
 	public Laptop(String brand, int ram, int price) {
-		super();
 		this.brand = brand;
 		this.ram = ram;
 		this.price = price;
 	}
 
+	// Only getters
 	public String getBrand() {
 		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 
 	public int getRam() {
 		return ram;
 	}
 
-	public void setRam(int ram) {
-		this.ram = ram;
-	}
-
 	public int getPrice() {
 		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
 	}
 
 	@Override
@@ -42,13 +30,14 @@ public class Laptop implements Comparable<Laptop> {
 		return "Laptop [brand=" + brand + ", ram=" + ram + ", price=" + price + "]";
 	}
 
+	@Override
 	public int compareTo(Laptop lap2) {
 
-		// this > lap2 = + (swap)
-		// this < lap2 = - (no swap)
+		// this > lap2 = + (swap), -> After
+		// this < lap2 = - (no swap) -> before
 		// this = lap2 = 0
 
-		//if (this.getPrice() > lap2.getPrice()) or
+		// if (this.getPrice() > lap2.getPrice()) or
 		if (this.price > lap2.price)
 			return 1;
 

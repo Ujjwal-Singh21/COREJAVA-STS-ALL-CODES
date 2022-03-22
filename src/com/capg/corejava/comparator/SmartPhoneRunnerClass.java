@@ -18,18 +18,18 @@ public class SmartPhoneRunnerClass {
 
 		// Comparator is an interface so direct object creation is not possible,
 		// so we are creating an anonymous class
-		Comparator<SmartPhone> com = new Comparator<SmartPhone>() {
+		Comparator<SmartPhone> comparator = new Comparator<SmartPhone>() {
 
 			@Override
 			public int compare(SmartPhone o1, SmartPhone o2) {
 				if (o1.getRam() > o2.getRam())
-					return 11; // can mention any positive number here , SWAP
+					return 1; // can mention any positive number here , SWAP
 				else
-					return -11; // can mention any negative number here , NO SWAP
+					return -1; // can mention any negative number here , NO SWAP
 			}
 		};
 		
-		Collections.sort(phonelist, com);
+		Collections.sort(phonelist, comparator);
 		
 		phonelist.forEach(System.out::println);
 

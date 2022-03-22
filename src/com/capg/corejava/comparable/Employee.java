@@ -1,5 +1,12 @@
 package com.capg.corejava.comparable;
 
+// getters not required because we are directly accessing variables while
+// compariosn instead of
+// getting it through getter methods.
+// seters are not required because we are not updating or setting any variable's
+// value.
+// if (this.getEmployeeId() > employee2.getEmployeeId()) -> requires getters -> without gettor ->
+//--------------------------------------------------------------------------------------------------------------
 public class Employee implements Comparable<Employee> {
 
 	public int employeeId;
@@ -7,76 +14,47 @@ public class Employee implements Comparable<Employee> {
 	public double salaryOfEmployee;
 
 	public Employee(int employeeId, String employeeName, double salaryOfEmployee) {
-
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.salaryOfEmployee = salaryOfEmployee;
 
 	}
 
-	// GETTERS METHOD
-	private int getEmployeeId() {
-
-		return employeeId;
-	}
-
-	private String getEmployeeName() {
-
-		return employeeName;
-	}
-
-	private double getSalaryOfEmployee() {
-
-		return salaryOfEmployee;
-	}
-
-	// SETTERS METHOD NOT IMPORTANT HERE FOR THIS PROGRAM FOR COMPARETO METHOD
-//	private void setEmployeeId(int employeeId) {
-//
-//		this.employeeId = employeeId;
-//	}
-//
-//	private void setEmployeeName(String employeeName) {
-//
-//		this.employeeId = employeeId;
-//	}
-//
-//	private void getSalaryOfEmployee(double salaryOfEmployee) {
-//
-//		this.employeeId = employeeId;
-//	}
-
 	// SORTING BASED ON ID
+	// ----------------------
 	@Override
 	public int compareTo(Employee employee2) {
-
-		if (this.getEmployeeId() > employee2.getEmployeeId()) {
+		
+		if (this.employeeId > employee2.employeeId) {
 			return 1;
 		} else {
 			return -1;
 		}
+
 	}
 
-//	// SORTING BASED ON SALARY
+	// SORTING BASED ON SALARY
+	// ---------------------------
 //	@Override
 //	public int compareTo(Employee employee2) {
-//
-//		if (this.getSalaryOfEmployee() > employee2.getSalaryOfEmployee()) {
+//		
+//		if (this.salaryOfEmployee > employee2.salaryOfEmployee) {
 //			return 1;
 //		} else {
 //			return -1;
 //		}
 //	}
 
-//	// SORTING BASED ON NAME
+	// SORTING BASED ON NAME
+	// ------------------------
+	// compareTo() method by default sorts Strings in alphabetical order, hence
+	// simply calling this method and work
+	// is done for sorting based on Names.
+	// -----------------------------------------------------------------------------------------------------------------
 //	@Override
 //	public int compareTo(Employee employee2) {
 //
-//		if (this.getEmployeeName().equals(employee2.getEmployeeName())) {
-//			return 1;
-//		} else {
-//			return -1;
-//		}
+//		return this.employeeName.compareTo(employee2.employeeName);
 //	}
 
 	@Override
