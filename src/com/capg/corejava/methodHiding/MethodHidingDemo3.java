@@ -2,7 +2,7 @@ package com.capg.corejava.methodHiding;
 
 // overridden method -> static, overridding method -> static
 // hence no error -> method hiding taking place.
-// method resolution -> by Compiler based on reference type. (similar to method overloading) 
+// method resolution -> by Compiler -> based on reference type. (similar to method overloading) 
 class ParentOne {
 	// static method
 	public static void display() {

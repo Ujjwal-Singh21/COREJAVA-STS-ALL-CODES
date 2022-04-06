@@ -1,7 +1,7 @@
 package com.capg.corejava.overridingwrtVarArgs;
 
-// if parent method has VarArgs as parameter say int..., now child has also VarArgs as parameter, then overRiding 
-// will take place because method paramaters are now same.
+// if parent method has VarArgs as parameter say int..., now child has also VarArgs as parameter, 
+// then overRiding will take place because method paramaters are now same.
 // since overRiding -> method resolution is taken care by JVM based on "run time Object".
 
 class ParentClass {
