@@ -1,13 +1,13 @@
 package com.capg.corejava.MultiThreadingRevision;
 
-//1) if method wish() is declared as non sysnc, then both threads t1 & t2 are trying to execute the wish() method on the same
-//   Display Object simultaneously hence the output in irregular.
+//1) If method wish() is declared as non-sync, then both threads t1 & t2 are trying to execute the wish() method on the same
+//   Display Object simultaneously, hence the output is irregular.
 
-//2) if we declare wish() method as synchronized, then at a time only 1 thread from either of t1 & t2 will acquire LOCK on 
+//2) If we declare wish() method as synchronized, then at a time only 1 thread from either of t1 or t2 will acquire LOCK on 
 //   Display Object and starts executing it, meanwhile other thread has to wait untill first thread execution completes.
 
-//3) After that only he first thread will release the LOCK and then the 2nd waiting thread will acquire LOCK on Display Object
-//   and starts its execution, So output we will get will be very normal and regular.
+//3) After that only the first thread will release the LOCK and then the 2nd waiting thread will acquire LOCK on Display Object
+//   and starts its execution, So output we will get will be very normal & regular.
 
 //4) That's why it is said that if a method is declared as synchronized then at a time only 1 thread can execute that method
 //   on the Current Object. Meanwhile All the remaining threads has to wait.
@@ -49,6 +49,7 @@ public class SynchronizationDemo1 {
 	public static void main(String[] args) {
 
 		Display d = new Display();
+		
 		MyThreadd t1 = new MyThreadd(d, "Dhoni");
 		MyThreadd t2 = new MyThreadd(d, "Yuvaraj");
 
