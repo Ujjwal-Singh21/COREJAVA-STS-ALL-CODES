@@ -14,16 +14,17 @@ class MyThread extends Thread {
 public class ThreadDemo1 {
 
 	public static void main(String[] args) {
-		MyThread myThread = new MyThread();
-		myThread.start();
-//		myThread.run();
+
+		MyThread t = new MyThread();
+		t.start();
+//		t.run();
 
 		for (int i = 1; i <= 10; i++) {
 			System.out.println("Main Thread");
 		}
-		
-		//If we try to start same thread once again
-		myThread.start(); // -> RuntimeException -> IllegalThreadStateException
+
+		// If we try to start same thread once again
+//		t.start(); // -> RuntimeException -> IllegalThreadStateException
 
 	}
 

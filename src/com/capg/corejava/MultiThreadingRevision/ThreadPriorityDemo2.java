@@ -17,9 +17,9 @@ public class ThreadPriorityDemo2 {
 
 	public static void main(String[] args) {
 		
-		MyThread7 myThread = new MyThread7();
-		myThread.setPriority(10);
-		myThread.start();
+		MyThread7 t = new MyThread7();
+		t.setPriority(10);
+		t.start();
 
 		// for loop executd by main Thread
 		for (int i = 1; i <= 10; i++) {

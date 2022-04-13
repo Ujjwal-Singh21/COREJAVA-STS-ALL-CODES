@@ -6,6 +6,7 @@ class ThreadB extends Thread {
 
 	@Override
 	public void run() {
+
 		synchronized (this) {
 
 			System.out.println("Child Thread Starts Calculation");
@@ -21,18 +22,22 @@ class ThreadB extends Thread {
 	}
 }
 
-public class InterThreadCommunicationDemo1 {
+public class InterThreadCommunicationDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 
 		ThreadB b = new ThreadB();
 		b.start();
+		
+//		Thread.sleep(2000);
 
 		synchronized (b) {
 
 			System.out.println("Main Thread Trying To Call Wait Method");
 
-			b.wait();
+			b.wait(); //main thread releases the LOCK immediately and enters into waiting state
+			
+//			b.wait(5000); // to avoid deadlock
 
 			System.out.println("Main Thread Got Notification From Child Thread");
 

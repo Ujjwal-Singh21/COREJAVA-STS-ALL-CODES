@@ -13,15 +13,15 @@ public class ThreadDemo5 {
 	public static void main(String[] args) {
 
 		// getting and setting name of main Thread
-		System.out.println(Thread.currentThread().getName());
-		Thread.currentThread().setName("Main thread name by user");
-		System.out.println(Thread.currentThread().getName());
+		System.out.println(Thread.currentThread().getName()); // main
+		Thread.currentThread().setName("User main");
+		System.out.println(Thread.currentThread().getName()); // User Main
 
 		// getting and setting name of Child Thread
-		MyThread4 myThread4 = new MyThread4();
-		System.out.println(myThread4.getName()); // -> Thread-0 by default given by JVM
-		myThread4.setName("First thread name by user");
-		System.out.println(myThread4.getName()); // -> First thread name by user
+		MyThread4 t = new MyThread4();
+		System.out.println(t.getName()); // -> Thread-0, by default given by JVM
+		t.setName("User First Thread");
+		System.out.println(t.getName()); // -> User First Thread
 
 		// Since we have changed the name of main thread
 		// Now it will say exception in thread -> Main thread name by user

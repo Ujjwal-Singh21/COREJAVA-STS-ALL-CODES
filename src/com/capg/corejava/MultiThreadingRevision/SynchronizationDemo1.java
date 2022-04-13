@@ -1,6 +1,6 @@
 package com.capg.corejava.MultiThreadingRevision;
 
-//1) If method wish() is declared as non-sync, then both threads t1 & t2 are trying to execute the wish() method on the same
+//1) If method wish() is declared as non-sync, then both threads t1 & t2 will try to execute the wish() method on the same
 //   Display Object simultaneously, hence the output is irregular.
 
 //2) If we declare wish() method as synchronized, then at a time only 1 thread from either of t1 or t2 will acquire LOCK on 

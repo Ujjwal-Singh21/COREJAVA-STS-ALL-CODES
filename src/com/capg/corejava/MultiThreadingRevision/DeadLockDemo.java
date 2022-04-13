@@ -49,13 +49,14 @@ class DeadLock extends Thread {
 	B b = new B();
 
 	public void m1() {
-		this.start();
-		a.d1(b);
+		this.start(); // internally as t.start -> so main thread starting the child thread here,
+		// now we have 2 threads main & child
+		a.d1(b); // this method call is done by main thread
 	}
 
 	@Override
 	public void run() {
-		b.d2(a);
+		b.d2(a); // this method call is done by child thread
 	}
 }
 
@@ -63,6 +64,7 @@ public class DeadLockDemo {
 
 	public static void main(String[] args) {
 
+		// main thread creates child thread object and then calls m1() method.
 		DeadLock d = new DeadLock();
 		d.m1();
 

@@ -21,16 +21,17 @@ public class JoinDemo1 {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		MyThread9 myThread = new MyThread9();
-		myThread.start();
+		MyThread9 t = new MyThread9();
+		t.start();
 
-		// main thread calling join() method on child thread object
-		// hence he will be in waiting state untill child thread completes
-		// after that he will come out of waiting state and continue its execution
-		myThread.join();
+		// main thread calling join() method on child thread object,
+		// hence he will be in waiting state untill child thread completes,
+		// after that he will come out of waiting state and continue its execution.
+		//------------------------------------------------------------------------------
+		t.join();
 
 		// if main thread wants to wait for child thread but only for 10 seconds
-//		myThread.join(10000);
+//		t.join(10000);
 
 		// for loop executd by main Thread
 		for (int i = 1; i <= 10; i++) {

@@ -16,15 +16,15 @@ class MyRunnable implements Runnable {
 	}
 }
 
-public class RunnableDemo1 {
+public class RunnableDemo {
 
 	public static void main(String[] args) {
 
 		MyRunnable myRunnable = new MyRunnable();
 
 		// creating Thread class Object to use its start() method
-		Thread thread = new Thread(myRunnable);
-		thread.start();
+		Thread t = new Thread(myRunnable);
+		t.start();
 
 		// Code executed by main thread
 		for (int i = 0; i < 10; i++) {

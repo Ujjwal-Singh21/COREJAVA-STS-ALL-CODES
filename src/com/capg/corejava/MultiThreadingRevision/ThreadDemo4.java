@@ -20,8 +20,8 @@ class MyThread3 extends Thread {
 public class ThreadDemo4 {
 
 	public static void main(String[] args) {
-		MyThread3 myThread3 = new MyThread3();
-		myThread3.start();
+		MyThread3 t = new MyThread3();
+		t.start();
 
 		System.out.println("main method");
 	}

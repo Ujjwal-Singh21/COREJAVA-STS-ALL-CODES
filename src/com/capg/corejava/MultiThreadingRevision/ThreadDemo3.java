@@ -3,8 +3,8 @@ package com.capg.corejava.MultiThreadingRevision;
 //Overriding start() method and providing an implmentation to it.
 //Now since we are not giving any chance for the Thread class start method to get executed.
 //overridden start() method in child class will get called just like a normal method call, and
-//No new thread will get created. Hence,
-//overridden run() method will never get executed.
+//No new thread will get created. 
+//Hence, overridden run() method will never get executed.
 //-------------------------------------------------------------------------------------------------------
 class MyThread2 extends Thread {
 
@@ -22,8 +22,8 @@ class MyThread2 extends Thread {
 public class ThreadDemo3 {
 
 	public static void main(String[] args) {
-		MyThread2 myThread2 = new MyThread2();
-		myThread2.start();
+		MyThread2 t = new MyThread2();
+		t.start();
 
 		System.out.println("main method");
 	}

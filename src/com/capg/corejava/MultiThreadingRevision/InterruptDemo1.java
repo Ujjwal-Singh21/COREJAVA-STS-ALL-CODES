@@ -19,11 +19,11 @@ public class InterruptDemo1 {
 
 	public static void main(String[] args) {
 
-		MyThread13 myThread = new MyThread13();
-		myThread.start();
+		MyThread12 t = new MyThread12();
+		t.start();
 
-		// main thread interuppting child thread after its first iteration of for loop
-		myThread.interrupt();
+		// main thread interrupting child thread after its first iteration of for-loop
+		t.interrupt();
 
 		// code executed by main thread
 		System.out.println("End of main");

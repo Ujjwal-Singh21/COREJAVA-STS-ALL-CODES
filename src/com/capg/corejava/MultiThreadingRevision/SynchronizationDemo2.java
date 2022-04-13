@@ -1,12 +1,13 @@
 package com.capg.corejava.MultiThreadingRevision;
 
 // Example of CLASS LEVEL LOCK
-// A thread needs to acquire a CLASS LEVEL LOCK if it needs to execute a static synchronized method.
+//------------------------------
+// 1) A thread needs to acquire a CLASS LEVEL LOCK if it needs to execute a static synchronized method.
 
-// 1) Creating 2 different Display objects for both threads, and because of it both threads starts executing simultaneousaly 
+// 2) Creating 2 different Display objects for both threads, and because of it both threads starts executing simultaneousaly 
 //    which results in an irregular Output.
 
-// 2) Hence we declare wish() method as static sync, and we start getting normal regular output, This is because to execute
+// 3) Hence we declare wish() method as static sync, and we start getting normal regular output, This is because to execute
 //    a static sync method a thread requires a CLASS LEVEL LOCK, hence say thread t1 acquires that CLASS LEVEL LOCK and starts 
 //    executing, meanwhile thread t2 has to wait for acquiring that CLASS LEVEL LOCK untill released by t1, once it gets it
 //    it starts its execution.

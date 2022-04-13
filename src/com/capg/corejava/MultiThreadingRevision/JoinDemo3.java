@@ -28,9 +28,9 @@ public class JoinDemo3 {
 		// assigning main thread object to child thread class static variable
 		MyThread11.mt = Thread.currentThread();
 
-		MyThread11 myThread = new MyThread11();
-		myThread.start();
-		myThread.join();
+		MyThread11 t = new MyThread11();
+		t.start();
+		t.join();
 
 		// for loop executd by main Thread
 		for (int i = 1; i <= 10; i++) {

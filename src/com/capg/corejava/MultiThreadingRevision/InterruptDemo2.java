@@ -1,7 +1,8 @@
 package com.capg.corejava.MultiThreadingRevision;
 
-//interrupt() call waiting untill target thread goes into either sleeping or waiting state.
+//interrupt() method call waiting, untill target thread goes into either sleeping or waiting state.
 //if target thread never goes in either sleeping or waiting state then interuppt() call gets wasted.
+//-------------------------------------------------------------------------------------------------------
 class MyThread13 extends Thread {
 
 	@Override
@@ -23,11 +24,11 @@ public class InterruptDemo2 {
 
 	public static void main(String[] args) {
 
-		MyThread13 myThread = new MyThread13();
-		myThread.start();
+		MyThread13 t = new MyThread13();
+		t.start();
 
-		// main thread interuppting child thread after its first iteration of for loop
-		myThread.interrupt();
+		// main thread interuppting child thread after its first iteration of for-loop
+		t.interrupt();
 
 		// code executed by main thread
 		System.out.println("End of main");

@@ -8,7 +8,7 @@ class Display2 {
 
 	public void wish(String name) {
 
-		// 1 Lakhs line of code present here
+		// 1 Lakhs line of code present here...........
 
 		synchronized (this) {
 			for (int i = 1; i <= 10; i++) {
@@ -22,7 +22,7 @@ class Display2 {
 			}
 		}
 
-		// Again 1 Lakhs line of code present here
+		// Again 1 Lakhs line of code present here..........
 	}
 }
 

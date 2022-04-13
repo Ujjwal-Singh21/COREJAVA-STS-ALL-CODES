@@ -19,8 +19,8 @@ public class ThreadPriorityDemo1 {
 		Thread.currentThread().setPriority(8);
 
 		// main thread creating Object of child Thread
-		MyThread6 myThread = new MyThread6();
-		System.out.println(myThread.getPriority()); // 8 -> inerited from Parent thread which is main thread
+		MyThread6 t = new MyThread6();
+		System.out.println(t.getPriority()); // 8 -> inerited from Parent thread which is main thread
 
 	}
 

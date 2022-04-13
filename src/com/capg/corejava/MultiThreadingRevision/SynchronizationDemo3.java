@@ -29,6 +29,7 @@ class Displayy {
 
 //Thread Class 1
 class MyThreadDemo1 extends Thread {
+	
 	Displayy d;
 
 	MyThreadDemo1(Displayy d) {
