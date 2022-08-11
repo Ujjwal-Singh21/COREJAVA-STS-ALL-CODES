@@ -13,7 +13,7 @@ public class EmployeeRunnerClass {
 		// Hence Collections.sort(employee) is not required
 		// TreeSet<Employee> employee = new TreeSet<>();
 
-		List<Employee> employee = new LinkedList<>();
+		List<Employee> employee = new LinkedList<Employee>();
 
 		employee.add(new Employee(1005, "ArRahman", 88000));
 		employee.add(new Employee(1003, "Jatin", 55000));

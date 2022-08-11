@@ -2,7 +2,7 @@ package com.capg.corejava.thisandsuper;
 
 // 1)this() -> used to call current class constructor, and can be used only as 1st line/statement inside a constructor.
 // 2)super() -> used to call parent class constructor, and can be used only as 1st line/statement inside a constructor.
-
+//---------------------------------------------------------------------------------------------------------------------
 class A {
 	A() {
 		System.out.println("Class A constructor");

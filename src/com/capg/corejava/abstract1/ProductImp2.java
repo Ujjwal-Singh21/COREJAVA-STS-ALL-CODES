@@ -24,6 +24,7 @@ public class ProductImp2 extends Product2 {
 	}
 
 	// overridden abstract class method
+	@Override
 	public void newProduct() {
 		System.out.println("my new products");
 	}

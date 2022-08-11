@@ -1,6 +1,7 @@
 package com.capg.corejava.thisandsuper;
 
 class ClassA {
+	
 	ClassA() {
 		System.out.println("Class A constructor");
 	}
@@ -11,16 +12,15 @@ class ClassA {
 }
 
 class ClassB extends ClassA {
+	
 	ClassB() {
-		// to call parent class Parameterized constructor, while calling child class
-		// default constructor.
+		// To call parent class Parameterized constructor, while calling child class default constructor.
 		super(4);
 		System.out.println("Class B constructor");
 	}
 
 	ClassB(int i) {
-		// To call Parent class Parameterized constructor, while calling Child class
-		// Parameterized constructor.
+		// To call Parent class Parameterized constructor, while calling Child class Parameterized constructor.
 		// We pass in an number in super() method.
 		super(i);
 		System.out.println("Class B int");

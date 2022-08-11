@@ -1,48 +1,44 @@
 package com.capg.corejava.interface1;
 
 interface NewBook {
+	
 	public void newbooktitle();
-
 	public void newbookAuthor();
-
 	public void newbookPrice();
 }
 
 interface Book3 extends NewBook {
+	
 	public void booktitle();
-
 	public void bookAuthor();
-
 	public void bookPrice();
 }
 
 public class BookImplement3 implements Book3, NewBook {
 
+	@Override
 	public void booktitle() {
 		System.out.println("INCEPTION");
-
 	}
 
+	@Override
 	public void bookAuthor() {
 		System.out.println("CHRISTOPHER NOLAN");
-
 	}
 
+	@Override
 	public void bookPrice() {
 		System.out.println(1000);
-
 	}
 
 	@Override
 	public void newbooktitle() {
 		System.out.println("THE PRESTIGE");
-
 	}
 
 	@Override
 	public void newbookAuthor() {
 		System.out.println("CHRISTIAN BALE");
-
 	}
 
 	@Override
@@ -53,7 +49,6 @@ public class BookImplement3 implements Book3, NewBook {
 	// local method of class
 	public void mydisplay() {
 		System.out.println("mydisplay() is local method");
-
 	}
 
 	public static void main(String[] args) {

@@ -5,8 +5,8 @@ package com.capg.corejava.staticMethodOverloadingandOverriding;
 // input parameters and type of input parameters.
 //--------------------------------------------------------------------------------------------------------------------
 // Can we overload static methods? 
-// The answer is ‘Yes’. We can have two or more static methods with the same name, but differences in input 
-// parameters. For example, consider the following Java program. 
+// The answer is ‘Yes’. We can have two or more static methods with the same name, but differences in input parameters. 
+// For example, consider the following Java program. 
 //--------------------------------------------------------------------------------------------------------------------
 public class StaticOverloading1 {
 

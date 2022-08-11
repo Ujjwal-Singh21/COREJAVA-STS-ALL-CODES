@@ -1,10 +1,9 @@
 package com.capg.corejava.interface1;
 
 interface Book2 {
+	
 	public void booktitle();
-
 	public void bookAuthor();
-
 	public void bookPrice();
 }
 
@@ -12,23 +11,19 @@ public class BookImplement2 implements Book2 {
 
 	public void booktitle() {
 		System.out.println("INCEPTION");
-
 	}
 
 	public void bookAuthor() {
 		System.out.println("CHRISTOPHER NOLAN");
-
 	}
 
 	public void bookPrice() {
 		System.out.println(1000);
-
 	}
 
 	// local method of class
 	public void mydisplay() {
 		System.out.println("mydisplay is local method");
-
 	}
 
 	public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package com.capg.corejava.abstract1;
 
-// Constructor in abstract class is used to initialize the instance variables available.
+// Constructor in abstract class is used to initialize the Instance/Global variables available.
 // So when Object reference is created for Abstract class using Implemntation/child class constructor,
 // Abstract class constructor gets called 1st, then it initializes the instance variables to default value,
 // after that child/implementation class constructor gets executed.
@@ -36,16 +36,17 @@ public class ProductImp3 extends Product3 {
 	}
 
 	// overridden abstract method is changed to non-abstract method by providing implementation.
-	//-------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	@Override
 	public void newProduct() {
 		System.out.println("my new products");
 	}
 
 	// non-abstract method is changed to abstract method.
-	// to do this, now this child class should also be declared as abstract class.
-	// If done so, then implementation class of this abstract class will be
-	// responsible to provide implementation to this abstract method.
-	//-------------------------------------------------------------------------------------
+	// To do this, now this child class should also be declared as abstract class.
+	// If done so, then implementation class of this abstract class will be responsible to provide implementation to this 
+	// abstract method.
+	//---------------------------------------------------------------------------------------------------------------------
 //	public abstract void allproducts();
 
 	// local method.

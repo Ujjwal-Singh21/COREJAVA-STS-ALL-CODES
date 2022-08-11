@@ -36,7 +36,5 @@ public class Demo2 implements firstInterface, secondInterface {
 
 		Demo2 demo2 = new Demo2();
 		demo2.show();
-
 	}
-
 }

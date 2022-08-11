@@ -1,5 +1,4 @@
 package com.capg.corejava.stringsbuilder;
-
 import java.util.Scanner;
 
 public class RevereseString {
@@ -8,10 +7,9 @@ public class RevereseString {
 
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Hello User Enter your input String :");
+		System.out.println("Hello User Enter your input String: ");
 
-		// taking input from user in StringBuilder format
-
+		// Taking input from user in StringBuilder format
 		StringBuilder sb = new StringBuilder(scanner.nextLine());
 
 		for (int i = 0; i < sb.length() / 2; i++) {
@@ -28,5 +26,4 @@ public class RevereseString {
 
 		System.out.println("Reversed Output String :" + sb);
 	}
-
 }

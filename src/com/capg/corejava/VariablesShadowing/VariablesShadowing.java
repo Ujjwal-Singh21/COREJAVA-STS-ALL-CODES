@@ -1,10 +1,10 @@
 package com.capg.corejava.VariablesShadowing;
 
-//There is no concept of Variable Overriding first of all.
-//If same variable is present in Parent class as well as in Child class, then it is called Shadowing.
-//Variable Resolution -> always taken care by Compiler -> based on reference type.
-//Whether variables are static variables or Instance variables, the concept is same in both cases.
-
+// There is no concept of Variable Overriding first of all.
+// If same variable is present in Parent class as well as in Child class, then it is called Shadowing.
+// Variable Resolution -> always taken care by Compiler -> based on reference type.
+// Whether variables are static variables or Instance variables, the concept is same in both cases.
+//----------------------------------------------------------------------------------------------------
 class Parent {
 	static String name = "Parent";
 }
@@ -23,8 +23,6 @@ public class VariablesShadowing {
 
 		System.out.println(p.name);
 		System.out.println(c.name);
-		System.out.println(p1.name);
-		
+		System.out.println(p1.name);	
 	}
-
 }
