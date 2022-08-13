@@ -1,12 +1,10 @@
 package com.capg.corejava.comparable;
 
-// getters not required because we are directly accessing variables while
-// compariosn instead of
-// getting it through getter methods.
-// seters are not required because we are not updating or setting any variable's
-// value.
-// if (this.getEmployeeId() > employee2.getEmployeeId()) -> requires getters -> without gettor ->
-//--------------------------------------------------------------------------------------------------------------
+// -> getters not required because we are directly accessing variables while compariosn instead of getting it 
+// through getter methods.
+// -> seters are not required because we are not updating or setting any variable's value.
+// if (this.getEmployeeId() > employee2.getEmployeeId()) then requires getters -> Below is without getters
+//------------------------------------------------------------------------------------------------------------
 public class Employee implements Comparable<Employee> {
 
 	public int employeeId;
@@ -17,7 +15,6 @@ public class Employee implements Comparable<Employee> {
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.salaryOfEmployee = salaryOfEmployee;
-
 	}
 
 	// SORTING BASED ON ID
@@ -30,7 +27,6 @@ public class Employee implements Comparable<Employee> {
 		} else {
 			return -1;
 		}
-
 	}
 
 	// SORTING BASED ON SALARY

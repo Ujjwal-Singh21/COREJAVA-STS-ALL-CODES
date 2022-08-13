@@ -2,6 +2,7 @@ package com.capg.corejava.comparator;
 
 // use comparator if u want to perform sorting on your own logic and parameters (Customized sorting).
 // or if class does not implement comparable interface.
+//---------------------------------------------------------------------------------------------------
 public class Television {
 
 	private String name;
@@ -30,5 +31,4 @@ public class Television {
 	public String toString() {
 		return "Television [name=" + name + ", price=" + price + ", type=" + type + "]";
 	}
-
 }

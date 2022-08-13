@@ -1,5 +1,4 @@
 package com.capg.corejava.comparator;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,29 +8,20 @@ public class TelevisionRunnerClass {
 
 	public static void main(String[] args) {
 
-		List<Television> tvList = new ArrayList<Television>();
+		List<Television> tvList = new ArrayList<>();
 		
 		tvList.add(new Television("LG", 33000, 2010));
 		tvList.add(new Television("SONY", 13000, 2015));
 		tvList.add(new Television("ONEPLUS", 88000, 2021));
 
-		Comparator<Television> comparator = new Comparator<Television>() {
-
-			// Overridden Comparator's Interface compare() method for comparison.
+		Comparator<Television> tvComparator = new Comparator<Television>() {
 			@Override
-			public int compare(Television o1, Television o2) {
-
-				// logic to sort
-				if (o1.getPrice() > o2.getPrice())
-					return 1;
-
-				else
-					return -1;
+			public int compare(Television tv1, Television tv2) {
+				return tv1.getPrice() - tv2.getPrice();
 			}
 		};
 
-	   // sort method from Collections class to sort
-		Collections.sort(tvList, comparator); 
+		Collections.sort(tvList, tvComparator); 
 
 		for (Television t : tvList) {
 			System.out.println(t);

@@ -1,5 +1,4 @@
 package com.capg.corejava.comparable;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,18 +7,16 @@ public class LaptopRunnerClass {
 
 	public static void main(String[] args) {
 
-		List<Laptop> lap = new ArrayList<>();
+		List<Laptop> laptopList = new ArrayList<>();
 		
-		lap.add(new Laptop("Dell", 16, 800));
-		lap.add(new Laptop("Apple", 8, 18000));
-		lap.add(new Laptop("Acer", 12, 500));
+		laptopList.add(new Laptop("Dell", 16, 800));
+		laptopList.add(new Laptop("Apple", 8, 18000));
+		laptopList.add(new Laptop("Acer", 12, 500));
 		
-		Collections.sort(lap);
+		Collections.sort(laptopList);
 
-		for (Laptop l : lap) {
+		for (Laptop l : laptopList) {
 			System.out.println(l);
 		}
-
 	}
-
 }

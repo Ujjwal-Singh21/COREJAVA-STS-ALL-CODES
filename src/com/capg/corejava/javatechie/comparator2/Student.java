@@ -1,10 +1,10 @@
 package com.capg.corejava.javatechie.comparator2;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// COMPARATOR EXAMPLE 2 BY JAVA TECHIE BY IMPLEMENTING COMPARATOR INTERFACE LIKE comparable.
+// COMPARATOR EXAMPLE 2 BY JAVA TECHIE BY IMPLEMENTING Comparator(I) like Comparable(I)
+//-------------------------------------------------------------------------------------
 public class Student {
 
 	private int id;
@@ -22,10 +22,15 @@ public class Student {
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public String toString() {
+		return "Student{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 
 	public static void main(String[] args) {
 
-		List<Student> students = new ArrayList<>();
+		List<Student> studentsList = new ArrayList<>();
 		
 		Student s1 = new Student(3, "Basant");
 		Student s2 = new Student(109, "Santosh");
@@ -34,26 +39,21 @@ public class Student {
 		Student s5 = new Student(101, "Bikash");
 		Student s6 = new Student(3, "Basant2");
 		
-		students.add(s1);
-		students.add(s2);
-		students.add(s3);
-		students.add(s4);
-		students.add(s5);
-		students.add(s6);
+		studentsList.add(s1);
+		studentsList.add(s2);
+		studentsList.add(s3);
+		studentsList.add(s4);
+		studentsList.add(s5);
+		studentsList.add(s6);
 
 		// CREATING COMPARATOR OBJECT HERE INSTEAD OF RUNNER CLASS
-		//Collections.sort(students, new IdComparator()); 
-		Collections.sort(students, new NameComparator());
+		//---------------------------------------------------------
+//		Collections.sort(students, new IdComparator()); 
+		
+		Collections.sort(studentsList, new NameComparator());
 
-		for (Student s : students) {
+		for (Student s : studentsList) {
 			System.out.println(s);
 		}
-
 	}
-
-	@Override
-	public String toString() {
-		return "Student{" + "id=" + id + ", name='" + name + '\'' + '}';
-	}
-
 }

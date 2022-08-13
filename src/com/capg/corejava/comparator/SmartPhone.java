@@ -1,6 +1,7 @@
 package com.capg.corejava.comparator;
 
-//use comparator if u want to perform sorting on your own logic and parameters.
+// Use comparator if u want to perform sorting on your own logic and parameters
+//-----------------------------------------------------------------------------
 public class SmartPhone {
 
 	private int ram;
@@ -11,7 +12,6 @@ public class SmartPhone {
 		this.ram = ram;
 		this.model = model;
 		this.price = price;
-
 	}
 
 	public int getRam() {
@@ -30,5 +30,4 @@ public class SmartPhone {
 	public String toString() {
 		return "SmartPhone [ram=" + ram + ", model=" + model + ", price=" + price + "]";
 	}
-
 }
