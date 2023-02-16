@@ -1,7 +1,7 @@
 package com.capg.corejava.abstract1;
 
 // Constructor in abstract class is used to initialize the Instance/Global variables available.
-// So when Object reference is created for Abstract class using Implemntation/child class constructor,
+// So when Object reference is created for Abstract class using Implementation/child class constructor,
 // Abstract class constructor gets called 1st, then it initializes the instance variables to default value,
 // after that child/implementation class constructor gets executed.
 //----------------------------------------------------------------------------------------------------------------

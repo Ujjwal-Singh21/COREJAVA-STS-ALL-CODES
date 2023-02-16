@@ -1,7 +1,6 @@
 package com.capg.corejava.interface1;
 
 interface Book2 {
-	
 	public void booktitle();
 	public void bookAuthor();
 	public void bookPrice();
@@ -39,8 +38,7 @@ public class BookImplement2 implements Book2 {
 		book2.bookAuthor();
 		book2.booktitle();
 		book2.bookPrice();
-		// book2.mydisplay();
-		// The method mydisplay() is undefined for the type Book2.
+		// book2.mydisplay(); // -> The method mydisplay() is undefined for the type Book2.
 
 	}
 

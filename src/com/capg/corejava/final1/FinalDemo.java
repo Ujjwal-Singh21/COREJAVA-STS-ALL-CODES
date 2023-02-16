@@ -2,14 +2,12 @@ package com.capg.corejava.final1;
 
 public class FinalDemo {
 
-	final String countryName = "India";
-	String cityName = "Bengaluru";
+	private final String countryName = "India";
+	private String cityName = "Bengaluru";
 
 	public void display() {
-		// cannot assign new name to countryname bcoz it is final
-		// countryname = "Bharat";
+		// countryname = "Bharat"; // -> cannot assign new name to countryname bcoz it is final
 		System.out.println("COUNTRY NAME :" + countryName);
-
 	}
 
 	public void show() {

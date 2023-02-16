@@ -1,14 +1,12 @@
 package com.capg.corejava.interface1;
 
 interface NewBook {
-	
 	public void newbooktitle();
 	public void newbookAuthor();
 	public void newbookPrice();
 }
 
 interface Book3 extends NewBook {
-	
 	public void booktitle();
 	public void bookAuthor();
 	public void bookPrice();
@@ -60,6 +58,7 @@ public class BookImplement3 implements Book3, NewBook {
 		bookImplement3.newbooktitle();
 		bookImplement3.newbookAuthor();
 		bookImplement3.newbookPrice();
+		bookImplement3.mydisplay();
 
 		// reference for Book3 interface to access only interface methods
 		Book3 book3 = new BookImplement3();

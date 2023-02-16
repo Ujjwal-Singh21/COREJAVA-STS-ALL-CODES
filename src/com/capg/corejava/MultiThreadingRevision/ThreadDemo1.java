@@ -24,7 +24,7 @@ public class ThreadDemo1 {
 		}
 
 		// If we try to start same thread once again
-//		t.start(); // -> RuntimeException -> IllegalThreadStateException
+		t.start(); // -> RuntimeException -> IllegalThreadStateException
 
 	}
 

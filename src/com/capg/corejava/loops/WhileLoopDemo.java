@@ -9,7 +9,5 @@ public class WhileLoopDemo {
 			System.out.println("its while loop at 10");
 			i++;
 		}
-
 	}
-
 }

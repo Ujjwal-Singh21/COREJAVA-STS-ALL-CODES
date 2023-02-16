@@ -1,6 +1,8 @@
 package com.capg.corejava.constructors;
 
-//Copy Constructor Demo Program
+// A copy constructor is a member function that initializes an object using another object of the same class. 
+// In simple terms, a constructor which creates an object by initializing it with an object of the same class, which has been
+// created previously is known as a copy constructor.
 public class Fruit {
 
 	private double fruitPrice;
@@ -20,12 +22,12 @@ public class Fruit {
 	}
 
 	// getters
-	public double showPrice() {
-		return fruitPrice;
-	}
-
 	public String showName() {
 		return fruitName;
+	}
+	
+	public double showPrice() {
+		return fruitPrice;
 	}
 
 	public static void main(String[] args) {

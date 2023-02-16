@@ -17,7 +17,6 @@ public class ArrayDemo3 {
 		// Taking input numbers one by one and storing in array with ArrayName "numbers"
 		for (int i = 0; i < size; i++) {
 			numbers[i] = sc.nextInt();
-
 		}
 
 		// displaying output

@@ -1,0 +1,142 @@
+HIBERNATE MAPPINGS
+==================
+
+
+case-1 (no mapping both classes are independent of each other)
+===============================================================
+
+Student class - rollNo, name, marks
+Laptop class - lid, lname
+
+session.save(student);
+session.save(laptop);
+
+o/p:- 2 tables created,
+      1 student table -> (rollno, name, marks)
+      1 laptop table -> (lid, lname)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+case-2 (Just student class has laptop object reference with @OneToOne mapping)
+==============================================================================
+
+Student class - rollNo, name, marks, @OneToOne Laptop laptop
+Laptop class - lid, lname
+
+save both using session.save();
+
+o/p:- 2 tables created, 
+      1 student table -> (rollno, name, marks, laptop_lid) (acts as foreign key for laptop table)
+      1 basic latop table -> (lid, lname)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+case-3 (Student class has now List<Laptop> with @OneToMany mapping)
+===================================================================
+
+Student class - rollNo, name, marks, @OneToMany List<Laptop> laptops
+
+Laptop class - lid, lname
+
+save both using session.save();
+
+o/p:- 3 tables created, 
+      1 student table -> (rollno, name, marks)
+      1 basic latop table -> (lid, lname)
+
+      1 Student_Laptop table -> (Student_rollNo, laptop_lid)
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Till now mapping was just unidirectional from Student side only, now we will make it bi-directional.
+
+case-4 (Student class has now List<Laptop> with @OneToMany mapping - also Laptop class has Student object reference with @ManyToOne mapping)
+=============================================================================================================================================
+
+
+Student class - rollNo, name, marks, @OneToMany List<Laptop> laptops
+
+Laptop class - lid, lname, @ManyToOne Student student;
+
+save both using session.save();
+
+o/p:- 3 tables created, 
+      1 student table -> (rollno, name, marks)
+      1 latop table -> (lid, lname also, student_rollNo) (acts as foreign key)
+
+      1 Student_Laptop table -> (Student_rollNo, laptop_lid)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+case-5 (Student class has now List<Laptop> with @OneToMany mapping - also Laptop class has Student object reference with @ManyToOne mapping)
+=============================================================================================================================================
+
+- Here we have included mappedBy attribute in student class to tell it that laptop is responsible to create mapping table and u no need to do anything.
+
+
+Student class - rollNo, name, marks, @OneToMany(mappedBy = "student") List<Laptop> laptops
+
+Laptop class - lid, lname, @ManyToOne Student student;
+
+save both using session.save();
+
+o/p:- 2 tables created, 
+      1 student table -> (rollno, name, marks)
+      1 latop table -> (lid, lname also, student_rollNo) (acts as foreign key)
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+case-6 (Many to Many on both sides without mappedBy attribute)
+==============================================================
+
+- Here now Laptop also will contain List<Student>
+- Since there is no use of mappedBy attribute, both classes with create its own separate mapping table
+
+Student class - rollNo, name, marks, @ManyToMany List<Laptop> laptops
+
+Laptop class - lid, lname, @ManyToMany List<Student> student;
+
+save both using session.save();
+
+o/p:- 4 tables created, 
+      1 student table -> (rollno, name, marks)
+      1 latop table -> (lid, lname) 
+
+      1 student_laptop -> (student_rollno, laptop_lid)
+      1 laptop_student -> (laptop_lid, student_rollno)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+case-7 (Many to Many on both sides with mappedBy attribute)
+==============================================================
+
+- Here now Laptop also will contain List<Student>
+- Since there is use of mappedBy attribute in Student class, then only Laptop class will be responsible to create laptop_student mapping table.
+
+Student class - rollNo, name, marks, @ManyToMany(mappedBy = "student") List<Laptop> laptops
+
+Laptop class - lid, lname, @ManyToMany List<Student> student;
+
+save both using session.save();
+
+o/p:- 3 tables created, 
+      1 student table -> (rollno, name, marks)
+      1 latop table -> (lid, lname) 
+
+      1 laptop_student -> (laptop_lid, student_rollno)
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,190 @@
+ DEVOPS
+========
+                                  
+
+1. Devops is not a new Tool or Technology in the market.
+
+2. It is a culture or process followed to develop, release and maintain the software 
+   projects/softwares/applications.
+
+3. Devops makes all this very faster and makes to increase the quality in better way.
+
+4. We can achieve by using automation tools.
+
+5. While a Software product is made in the organization, there will be 2 groups working together.
+   
+   a) Development Group.
+   b) Operation Group.
+
+6. The names of these 2 groups are represented by the name DevOps.
+
+7. These 2 groups can be further divided into sub-groups.
+
+a) Development Group:
+=======================
+
+-> The people who are involviong in following areas are considered to be part of Development Group.
+
+    1) Planning
+    2) Coding
+    3) Building
+    4) Testing
+
+-> Example: 
+============
+
+    1) Business Analyst (BA)
+    2) System Analyst (SA)
+    3) Developer / Coder
+    4) Build Engineer
+    5) Test Engineers (QA)
+  
+b) Operations Group:
+=====================
+
+-> The people who are involviong in following areas are considered to be part of Development Group.
+
+  1) Release
+  2) Deployement
+  3) Operate
+  4) Monitoring
+
+-> Example: 
+==============
+
+ 1) Release Engineers
+ 2) Configuration Engineer
+ 3) System Admin
+ 4) DataBase Admin
+ 5) Network Admin
+
+
+8. So DevOps is a combination of Development and Operational Teams.
+
+9. The main objective of DevOps is to implement an effective collaboration between these both Development and 
+   Operational teams.
+
+
+Different SDLC models:
+=======================
+1) Waterfall Model
+
+2) Prototype Model
+3) Incremental/Iterative model
+4) Spiral Model
+5) RAD Model
+6) Big-Bang Model
+7) Fish Model
+8) V Model
+
+9) Agile Model
+
+10) DevOps Model
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.1) WaterFall Model: (Also known as Linear sequential Model)
+================================================================
+
+Requirement Gathering / Collection --> Requiremnet Analysis --> Design --> 
+Coding --> Testing --> Release --> Maintainence
+
+Advantages:
+============
+a) Simple and very easy to implement.
+b) More clear.
+c) Best suitable for small projects & when requirements are fixed and final in the begining itself.
+
+Limitations:
+=============
+a) Development Time will be increased.
+b) Development Cost will be increased.
+c) It won't accept any kind of requirement changes in the middle.
+d) Client satisfaction is very very LOW.
+e) Bug fixing is very costly because we can't identify bugs in early lifecycle phases.
+f) Not at all suitable for large projects.
+g) Its a history now and no one uses it anymore.
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+9.1) Agile Model: 
+==================
+
+-> Agile ==> Speed
+-> This was the most frequently used and hotcake model for Software Development.
+-> Agile Model is Sub-divided into multiple sub-models.
+
+1) Rational Unify Process (RUP)
+2) Adaptive Software Development (ASD)
+3) Feature Driven Development (FDD)
+4) Crystal Clear
+5) Dynamic Software Development Method (DSDM)
+6) Extream Programming
+7) SCRUM model
+
+-> SCRUM model is most famous and frequently used model.
+
+ SCRUM
+========
+ -> SCRUM is derieved from rugby game,
+ -> SCRUM is an agile based model
+ -> Unlike Waterfall, It is non-linear and non-sequential.
+ -> It is an iterative Model.
+ -> Total software product will be developed Increment-by-Increment.
+ -> Each increment is called as Sprint.
+ -> In every Sprint 7-9 people works.
+ -> Every Sprint will be delievered in 1 to 3 weeks.
+
+Example:
+---------
+-> A website of 100 pages
+-> Divided into 20-20 pages and group of people works on each 20 pages part.
+-> Like 3 developers, 2 testers, and 1 UI designer.
+
+Advantages:
+------------
+-> Continuous Delievery, Continuous Feedback.
+-> Allows requirement changes in the middle.
+-> Client satisfaction is very very high.
+-> Less Development time.
+-> Less Development Cost.
+
+
+Why Should we go from Agile to DevOps? What are differences between both of them?
+------------------------------------------------------------------------------------
+
+SIMILARITIES:
+-------------
+1. Both are software development methodologies.
+2. Both Models concentrates of Radid software development With team collaboration.
+
+DIFFERENCES:
+------------
+1) The difference will come once the Development of the project is completed.
+
+Agile model -> talks only about Development phased but never talks about Operations phase.
+DevOps -> talks about complete Product lifecyle (both development and Operations phase).
+
+2) In Agile model, separate people are responsible for development, testing and deployment.
+   But in DevOps model, the DevOps Engineer (DevOps genralist) is responsible for everything, like from Development to
+   Operations and from Operations to Development.
+
+3) Agile Model won't force us to use Automation tools,
+   But DevOps model is completely based on Automation tools.
+
+4) Agile model always gives highest priority for speed and because of that the quality gets lost somehow,
+   However , while using DevOps Model, both speed & quality is maintained.
+
+5) In Agile Client is responsible for giving the feedback for the sprint,
+   But in DevOps, immediate feedback is available from monitoring tools.
+
+--------------------------------------------------------------------------------------------------------------------
+
+So finally, what is DevOps?
+=============================
+
+=> It is a new culture/process.
+=> It is the process of continuous Development, continuous Relase and continuous release of the Software.
+
+---------------------------------------------------------------------------------------------------------------------

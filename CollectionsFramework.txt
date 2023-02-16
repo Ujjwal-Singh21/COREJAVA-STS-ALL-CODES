@@ -1,0 +1,758 @@
+COLLECTIONS FRAMEWORK :-
+=======================
+Package -> Java.util.collection
+Iterable(I) ----> Collection(I) -----> List(I)/Set(I)/Queue(I)
+
+A) List Interface
+B) Set Interface
+C) Queue Interface
+D) Map Interface
+
+--> Basically we use Collection framework to hold the data and transfer the data accross a network.
+    Hence Every collection class needs to be serializable.
+
+--> So Every Collections class by default implements "serializable" Interface to be able to transfrer
+    Collections objects easily from one place to another place.
+
+--> Once we transfer it, the reciver will receive transferred Collection Object. But,
+    The receiever will not perform any opeartions directly on that receieved object. Because if something 
+    goes wrong he may not be able to recover from it. So he will simply make a copy of it.
+    This is called cloning.
+    Therefore every Collection Class by default implements "Cloneable" interface.
+
+-------------------------------------------------------------------------------------------------------------------
+
+                                 A) List Interface (I) :-
+                                ==========================
+
+--> In List Interface, (i) DUPLICATES ARE ALLOWED. (ii) INSERTION ORDER IS MAINTAINED.
+--> List Interface has 3 implementation classes. They are,
+
+1) ArrayList(C)
+2) LinkedList(C)
+3) Vector(C) <- Stack.(C)
+
+--> ArrayList and Vector both implements "RandomAccess" interface by default.
+
+
+                                    1.1)ArrayList
+                                   ----------------
+1) The underline Data Structure is "Resizeable Array" or "Growable Array".
+
+2) Duplicates are allowed.
+
+3) Insertion order preserved.
+
+4) Heterogeneous Objects are allowed [Except Treeset and Treemap].
+
+5) Null insetion is allowed.
+
+6) Non-Continuous memory allocation and flexible in size. (Opposite of normal array).
+
+7) Provides index access to its elements, hence quick random access is possible.
+
+8) If any new object is inserted in the middle of two existing objects, then the objects next to
+   newly inserted objects has to shift, hence time consuming and less efficient.
+
+9) Its methods are Non-synchronized hence not Thread Safe.
+
+10) Best Choice to use -> if frequent operation is retrieval.
+    Bad Choice to use  -> if frequent operation is insertion/deletion in middle.
+
+1.2)ArrayList Constructors
+------------------------------
+a) ArrayList arraylist = new ArrayList();
+   This is the 1st Constructor.
+   Creates an empty ArrayList object with initial capacity = 10.
+   Once ArrayList capacity is full,
+   A new ArrayList will be created with the new capacity = (CurrentCapacity * 3/2) + 1.
+   Then the data from old arraylist is copied to new created arraylist.
+   But this is time consuming and reduces efficiency.
+
+b) Hence if we already know our capacity of objects to be inseretd lets say 1000 objects,
+   then we can create an ArrayList object with 1000 objects capacity at the beginining itself.
+   We have a 2nd Constructor to do this.
+   eg -> ArrayList arraylist = new ArrayList(int 1000);
+
+c) For any Collection object lets say (LinkedList, Treeset, vector/stack) to create an equivalent
+   ArrayList object, we use a 3rd constructor.
+   eg-> ArrayList arraylist = new ArrayList(Collection c); 
+        Here, Collection c can be any Collection object mentioned above.
+
+-----------------------------------------------------------------------------------------------------------
+
+                                         2.1) Linked List
+                                        -------------------
+
+1) The underlying Data Structure is "Doubly Linked List".
+
+2) Maintains insertion order.
+
+3) Duplictates and null are allowed.
+
+4) Heterogeneous objects can be stored.
+
+5) Non-synchronized hence not thread safe.
+
+6) Does not implements "RandomAccess Interface".
+
+7) During Middle insertions/deletions no shifting is required, so Manupulation is fast,
+   Simply add a new node between two existing nodes and change memory address pointers.
+
+8) Every retrieval operation should start from 1st element only.
+        eg:- If we want 5th element then Process starts from 1st element only...
+             1st element gives address pointer gives address of 2nd element, 2nd gives address for 3rd,
+             3rd gives 4th element's address and only then finally 4th element address pointer provides
+             5th element address. Then only we get 5th element finally.
+             Imagine getting 1000th element in this way... very bad and very very time consuming.
+
+9) Best Choice to use -> if frequent operation is insertion/deletion in middle.
+   Bad Choice to use  -> if frequent operation is retrieval.
+                         Because all nodes are located at different non-continuous memory locations.
+
+10) Usually we can use LinkedList to implement Stack(LIFO) and Queues(FIFO).
+   To provide support for these requirement, Only LinkedList class has these extra 6 specific methods.
+   -> void addFirst();
+   -> Void addLast();
+   -> Object getFirst();
+   -> Object getLast();
+   -> Object removeFirst();
+   -> Object removeLast();
+
+
+2.2) LinkedList Constructors
+------------------------------
+
+a) Alike in ArrayList, here in LinkedList reserving the memory or capacity in advance are not present.
+   If you want a new node, create it and attach it. That's all.
+
+b) 1st constructor -> to create an empty LinkedList Object.
+   eg -> LinkedList linkedlist = new LinkedList();
+
+c) For any Collection object lets say (ArrayList, Treeset, vector/stack) to create an equivalent
+   LinkedList object, we use a 2nd constructor.
+   eg-> LinkedList linkedlist = new LinkedList (Collection c); 
+        Here, Collection c can be any Collection object mentioned above.
+
+-------------------------------------------------------------------------------------------------------------
+
+                                            3.1) Vector 
+                                           --------------
+
+1) Everything is same and similar to ArrayList Class.
+
+2) The only difference is Vector is synchronized hence Thread-Safe.
+   Whereas, ArrayList is non-synchronized and not Therad-Safe.
+
+3) Vector is from from version 1.0 and from 1995, Its little old and depricated now.
+   Since Vector is old, its method names are also a bit lengthy (Old-fashioned).
+
+    For addition
+    ----------------
+       eg -> For ArrayList or LinkedList we have add() method.
+          -> For vector we say it as addElement(). The other methods if we compare are like this,
+
+      For Deletion :-
+      ------------------
+      -> remove(Object) -- removeElement(Object)
+      -> remove(int index) -- removeElementAt(int index)
+      -> clear() -- removeAllElements()
+
+      For accessing :-
+      ------------------
+      -> get(int index) -- elementAt(int index)
+      -> firstElement(), lastElement()
+
+     Other methods of vector :-
+     -----------------------------
+       size() -> currently how many elements are there in the vector.
+       capacity() -> capacity of Vector which tells us how many elements we can accomodate.
+
+3.2) Vector Constructors
+--------------------------
+
+a) Vector v = new Vector();
+   This is the 1st constructor which creates an empty vector class object with initial capacity = 10.
+   Once Vector capacity is full,
+   A new Vector will be created with the new capacity = (CurrentCapacity * 2) -> [Double Size]
+   Then the data from old arraylist is copied to new created arraylist.
+   But this is time consuming and reduces efficiency.
+
+b) Vector vector = new Vector(int initialCapacity);
+   This is the 2nd Constructor.
+   eg-> Vector v = new Vector(1000);
+   This Constructor creates an empty Vector object with specified capacity 1000.
+
+c) Vector v = new Vector(int initialCapacity, int incrementCapacity);
+
+   -> Let's say we have created a Vector with initialCapacity = 1000; Now when Vector will be full and we want to
+   insert 1001th element, a new Vector object will be created with 1000 * 2 capacity = 2000.
+
+   -> The elements from old Vector object will get copied to newly created Vector object.
+   But here if we want to insert only 1 or 2 elements then remaining 998 memory capacity is getting wasted.
+
+   -> So to overcome that, this constructor is ued that allows us to specify the increment value. For eg if we
+   want new Vector object to get incremented only by 5 capacity then we do like this.
+   eg-> Vector vector = new Vector(1000, 5);
+
+   -> This Constructor creates an empty Vector object with specified capacity 1000 & increment capacity 5.
+
+d) Vector v = new Vector(Collection c);
+   For any Collection object lets say (LinkedList, Treeset, stack) to create an equivalent
+   Vector object, we use a 4th constructor. So,
+        eg-> Vector vector = new Vector(Collection c);
+             Here, Collection c can be any Collection object mentioned above.
+
+-----------------------------------------------------------------------------------------------------------------
+
+                                              3.1.1) Stack
+                                             ----------------
+
+1) It is a child class of Vector class.
+2) It is especially designed for LIFO order.
+
+3.1.2) Stack Constructors
+---------------------------
+a) Stack stack = new Stack();
+   It used to create an empty stack object.
+
+3.1.3) Stack methods
+-------------------------
+a) push()   -> push an element at the top of stack.
+b) pop()    -> delete an element from the top of stack.
+c) peek()   -> return the element which is at the top of stack.
+d) empty()  -> check whether stack is empty or not(boolean).
+e) search() -> to search a partuclar element in the stack.
+               It returns the number where that particular number is present. It returns offset.
+            Offset -> if element is there then return its position, if element is not there then returns -1.
+
+
+==================================================================================================================
+
+
+                                     B) Set Interface (I) :-
+                                   ===========================
+
+--> In set Interface, (i) DUPLICATES ARE NOT ALLOWED. (ii) INSERTION ORDER IS NOT MAINTAINED.
+--> Set Interface does not contain any new methods, so We have to use only Collection Interface methods.
+--> set Interface implementation classes are as follows :-
+
+1) HashSet(C) -> LinkedHashSet(C)
+2) SortedSet(I) -> NavigableSet(I) -> TreeSet(C) 
+
+
+--------------------------------------------------------------------------------------------------------------
+
+1.1) HashSet
+--------------
+
+1) The underlying Data Structure is HashTable.
+
+2) Duplicates are not allowed. If tried to add duplicate elements, we will not get any compile time error.
+   add() method will simply return false and duplicate element doesn't get added.
+
+3) Insertion order is not maintained and all objects or elements will be insterted based on HashCode.
+
+4) Since no index numbers, inserting an element at a particular position or getting an element from a 
+   particular position is not possible.
+
+5) Heterogeneous objects are allowed to be stored.
+
+6) Null value is allowed to add, but only one null element.
+   If many null values are added, while printing it will show only one null value.
+
+7) Best Choice -> If frequent operation is search operation.
+
+8) How do you update an element in a HashSet in Java?
+   Ans -> Since a Set can only contain one instance of an object (as defined by its equals and hashCode 
+          methods), just remove it and then add it. If there was one already, that other one will be 
+          removed from the Set and replaced by the one you want.
+
+
+1.2) HashSet Constructors
+---------------------------
+
+a) HashSet hashset = new HashSet();
+   This is the 1st constructor.
+   It creates an empty HashSet object with default initial capacity = 16;
+
+b) HashSet hashset = new HashSet(int initialCapacity);
+     eg-> HashSet hashset = new HashSet(1000);
+   This is the 2nd constructor.
+   It creates an empty HashSet object with specified initalCapacity and "Fill ratio (or) Load factor = 0.75%.
+  
+   LoadFactor -> Normally in LinkedList a new LinkedList is created when old one capacity gets full.
+                 But here in HashSet after it is filled by 75%, a new HashSet gets created automatically.
+
+c) HashSet hashset = new HashSet(int initialCapacity, float loadFactor);
+     eg-> HashSet hashset = new HashSet(1000, 0.75);
+   This is 3rd constructor.
+   It creates an empty HashSet object with specified initalCapacity and specified Load Factor.
+
+
+d) For any Collection object lets say (ArrayList, Treeset) to create an equivalent HashSet object, 
+   We use 4th constructor.
+   eg-> HashSet hashset = new HashSet (Collection c); 
+        Here, Collection c can be any Collection object mentioned above.
+
+note: -> These 4 constructors are common for :-
+           i) Linked HashSet
+           ii) HashMap, LinkedHashMap
+           iii) Identity HashMap & Weak HashMap  
+           iv) HashTable
+
+1.3) HashSet Methods
+-------------------------
+
+a) All methods are same as LinkedList or ArrayList excluding few which are,
+   remove(index) -> can be removed by passsing direct particular element itself.
+   get(Index) -> Cannot access elements using its index numbers because no index numbers are here.
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+1.1.1) LinkedHashSet 
+-----------------------------
+1) It is child class of HashSet(C) introduced in version 1.4.
+
+2) Unlike HashSet, whose underlying DataStructure is HashTable,
+   LinkedHashSet underlying DataStructure is => (HashTable + LinkedList).
+
+3) Then the next difference is it maintains insertion order.
+
+4) All Constructors are also same as HashSet.
+
+5) LinkedHashSet is best choice to develop cache based applications, where duplicates are not allowed
+   and insertion order is preserved.
+
+-------------------------------------------------------------------------------------------------------------------
+
+                                     2.1) SortedSet Interface
+                                    ---------------------------
+
+1) It is the child Interface of Set(I).
+2) Here also duplicates are not allowed, but
+3) It maintains some sorting order for inserted elements.
+
+2.2) SortedSet specific methods
+--------------------------------------
+
+-> Since SortedSet maintains a sorted order order of elements which is ascending order naturally,
+   => DEFAULT SORTING ORDER FOR NUMBERS => ASCENDING ORDER.
+   => DEFAULT SORTING ORDER FOR STRINGS=> ALPHABETICAL ORDER. 
+-> We can have some specific methods that can give us first,last,greater,lesser,subset elements respectively.
+-> We can apply these methods on SortedSet child class which is TREESET.
+ 
+   a) first() -> returns first element of sorted set.
+   b) last() -> returns last element of sorted set.
+   c) headSet(element) -> returns all elements that are lesser than passed element.
+   d) tailSet(element) -> returns all elements that are greater than passed element including passed element.
+   e) subset(startElement, endElement) -> returns a particular SubSet from whole SortedSet based on specified
+                                          range.(Including starElement, excluding endElement).
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+                                   2.1.1) Navigable set(I)
+                                  -----------------------------
+
+=> Child Interface of SortedSet(I).
+
+=> Introduced in version 1.6 with some extra methods to fill gaps.
+
+=> NavigableSet represents a navigable set in Java Collection Framework.
+ 
+=> The NavigableSet interface inherits from the SortedSet interface. 
+
+=> It behaves like a SortedSet with the exception that we have navigation methods available in addition 
+   to the sorting mechanisms of the SortedSet.
+
+=> Those extra methods are -> floor(), ceiling(), higher(), lower(), descendingSet()
+
+
+example Program :-
+-------------------
+
+ TreeSet<Integer> treeSet = new TreeSet<>();
+
+        //adding some Integer objects
+        treeSet.add(1000);
+        treeSet.add(3000);
+        treeSet.add(4000);
+        treeSet.add(2000);
+        treeSet.add(5000);
+
+        System.out.println("Initially: " + treeSet);
+
+        // method1 -> ceiling() -> >=
+        System.out.println("Ceiling 1: " + treeSet.ceiling(1900));
+        System.out.println("Ceiling 2: " + treeSet.ceiling(2000));
+
+        //method2 -> higher() -> >
+        System.out.println("Higher: " + treeSet.higher(2000));
+
+        //method3 -> floor() -> <=
+        System.out.println("Floor 1: " + treeSet.floor(2900));
+        System.out.println("Floor 2: " + treeSet.floor(3000));
+
+        //method4 -> lower() -> <
+        System.out.println("Lower: " + treeSet.lower(3000));
+
+        //method5 -> descendingSet()
+        System.out.println("DescendingSet: " + treeSet.descendingSet());
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+                                         2.1.2) TreeSet(C)
+                                       -------------------------
+1) The underlying DataStructure is "Balanced Tree".
+
+2) Duplicates are not allowed as usual throughout Set Intereface.
+
+3) Insertion order not maintained, instead, Natural Sorting order is maintained.
+
+4) Heterogeneous objects/elements are not allowed. [Also for treemap]
+   Only homogeneous is allowed.
+   So where ever sorting is present, heterogeneous elements are not allowed.
+   If tried to insert heterogeneous elements => RunTime Exception -> "ClassCastException".
+
+    => TreeSet does not allow to insert heterogeneous objects because it must compare objects to determine 
+       sort order. 
+    => TreeSet is not synchronized. If multiple threads access a hash set concurrently, and at 
+       least one of the threads modifies the set, it must be synchronized externally.
+
+5) Only one null value is allowed that too only in an empty TreeSet Object.
+   If TreeSet has some elements and null value is inserted the we get NullPointerException.
+   Becasue to perform sorting, 2 elements are normally compared that already know.
+   But if one of 2 element is null then comparison is not possible hence NullPointerException.
+
+
+2.1.2.1) TreeSet Constructors
+--------------------------------
+a) TreeSet treeset = new TreeSet ();
+   This is the 1st constructor.
+   It creates an empty TreeSet object.
+   Sorts elements in natural order by internally using Comparable(I) -> compareTo() method.
+
+b) TreeSet treeset = new TreeSet (Comparator c);
+   This is the 2nd constructor.
+   It creates an empty TreeSet object, where elements will be inserted according to Customized sorting order
+   specified through Comparator's Compare(Object obj1, Object ob2) method.
+
+c) TreeSet treeset = new TreeSet (SortedSet s);
+   This is 3rd Constructor.
+   We can provide any SortedSet(I) implementation class here to create our TreeSet Object.
+
+d) For any Collection object lets say (ArrayList, HashSet) to create an equivalent TreeSet object, 
+   We use 4th constructor.
+   eg-> TreeSet treeset = new TreeSet (Collection c); 
+        Here, Collection c can be any Collection object mentioned above.
+
+
+Important points to remember :-
+------------------------------
+a) If we are depending on default natural sorting order, then inserted objects/elements should be
+   Homogeneous and Comparable.
+   Otherwise we will get RunTime Exception saying => CLASSCASTEXCEPTION
+
+b) An object is said to be Comparable if and only if the corresponding class implements
+   java.lang.comparableInterface.
+
+c) String Class and all Wrapper Classes by default implements Comparable Interface.
+   But StringBuffer does not implements Comparable Interface, Hence we get CLASSCASTEXCEPTION
+   while trying to add StringBuffer Objects.
+
+eg => 
+------
+public class TreeSet2 {
+    public static void main(String[] args) {
+        TreeSet treeSet = new TreeSet();
+
+        treeSet.add(new StringBuffer("A"));
+        treeSet.add(new StringBuffer("Z"));
+        treeSet.add(new StringBuffer("L"));
+        treeSet.add(new StringBuffer("B"));
+
+        System.out.println(treeSet);
+
+    }
+}
+
+d) But StringBuffer started implementing Comparable interface from Java 11 hence no error anymore.
+
+e) If we are defining our own sorting based on Comparator, then 
+   those objects need not be homegeneous and comparable
+   They can be heterogeneous and non-comparable.
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+                                           C) Queue(I) & Deque(I)
+                                         ============================
+
+
+1) Queue(I) -> (i) PriorityQueue(C) (ii) LinkedList(C) -> Deque(I) -> (i) ArrayDeque(C) (ii) LinkedList(C)
+3) BlockingQueue(I) -> (i) LinkedBlockingQueue(C) (ii) PriorityBlockingQueue(C)
+
+-------------------------------------------------------------------------------------------------------------------
+
+1.1) PriorityQueue(C)
+----------------------
+
+a) A PriorityQueue is used when the objects are supposed to be processed based on the priority. 
+
+b) It is known that a Queue follows the First-In-First-Out algorithm, but sometimes the elements of the queue are 
+   needed to be processed according to the priority, that’s when the PriorityQueue comes into play. 
+
+c) The PriorityQueue is based on the priority heap. The elements of the priority queue are ordered according to the 
+   natural ordering, or by a Comparator provided at Queue construction time, 
+   depending on which constructor is used.  
+
+1.2) Few important points on Priority Queue are as follows: 
+----------------------------------------------------------------
+
+1) PriorityQueue doesn’t permit null.
+   Duplicates are allowed.
+
+2) We can’t create PriorityQueue of Objects that are non-comparable.
+
+3) PriorityQueue are unbound queues.
+
+4) The head of this queue is the least element with respect to the specified ordering. 
+   If multiple elements are tied for least value, the head is one of those elements — ties are broken arbitrarily.
+
+5) Since PriorityQueue is not thread-safe, so java provides PriorityBlockingQueue class that implements the 
+   BlockingQueue interface to use in java multithreading environment.
+
+6) The queue retrieval operations poll, remove, peek, and element access the element at the head of the queue.
+
+7) It provides O(log(n)) time for add and poll methods.
+
+8) It inherits methods from AbstractQueue, AbstractCollection, Collection and Object class.
+
+1.3) Constructors:
+-----------------------
+
+1) PriorityQueue pq = new PriorityQueue(): 
+   This is 1st Constructor.
+   It Creates a PriorityQueue with the default initial capacity (11) that orders its elements according to 
+   their natural ordering.
+
+      eg ->  PriorityQueue<E> pq = new PriorityQueue<E>();
+
+2) PriorityQueue pq = new PriorityQueue(Collection<E> c): 
+   This is 2nd constructor.
+   It Creates a PriorityQueue containing the elements in the specified collection.
+
+      eg -> PriorityQueue<E> pq = new PriorityQueue<E>(Collection<E> c);
+
+3) PriorityQueue pq = new PriorityQueue(int initialCapacity); 
+   This is 3rd constructor.
+   It Creates a PriorityQueue with the specified initial capacity that orders its elements according to 
+   their natural ordering.
+
+      eg -> PriorityQueue<E> pq = new PriorityQueue<E>(1000);
+
+4) PriorityQueue pq = new PriorityQueue(int initialCapacity, Comparator<E> comparator);
+   This is 4th constructor. 
+   It Creates a PriorityQueue with the specified initial capacity that orders its elements according to the 
+   specified comparator.
+
+      eg -> PriorityQueue<E> pq = new PriorityQueue(int initialCapacity, Comparator<E> comparator);
+
+5) PriorityQueue pq = new PriorityQueue(PriorityQueue<E> c);
+   This is 5th constructor.  
+   It Creates a PriorityQueue containing the elements in the specified priority queue.
+
+     eg -> PriorityQueue<E> pq = new PriorityQueue(PriorityQueue<E> c);
+
+6) PriorityQueue pq = new PriorityQueue(SortedSet<E> c);
+   This is 6th constructor.  
+   It Creates a PriorityQueue containing the elements in the specified sorted set.
+
+     eg -> PriorityQueue<E> pq = new PriorityQueue<E>(SortedSet<E> c);
+
+1.4)Methods in PriorityQueue class :- 
+---------------------------------------
+a) For additions -> add(), offer()
+b) For deletion -> poll(), remove(), clear() - for deleting fully.
+c) For Cheking top element -> element(), Peek()
+d) Other important methods -> size(), stream(), parallelStream(), isEmpty(), 
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+1.1.1) LinkedList
+-------------------
+1) LinkedList is a class which is implemented in the collection framework which inherently implements the linked 
+   list data structure. 
+
+2) It is a linear data structure where the elements are not stored in contiguous locations and every element is a 
+   separate object with a data part and address part. 
+   The elements are linked using pointers and addresses. 
+
+3) Each element is known as a node. Due to the dynamicity and ease of insertions and deletions, 
+   they are preferred over the arrays or queues.
+
+--------------------------------------------------------------------------------------------------------------------
+
+                                                2.1) ArrayDeque
+                                               ------------------
+
+1) The ArrayDeque in Java provides a way to apply resizable-array in addition to the implementation of the 
+   Deque interface. 
+
+2) It is also known as Array Double Ended Queue or Array Deck. 
+
+3) This is a special kind of array that grows and allows users to add or remove an element from both sides of 
+   the queue. 
+
+2.2) Few important features of ArrayDeque are as follows:  
+----------------------------------------------------------
+
+1) Array deques have no capacity restrictions and they grow as necessary to support usage.
+
+2) They are not thread-safe which means that in the absence of external synchronization, 
+   ArrayDeque does not support concurrent access by multiple threads.
+
+3) Null elements are prohibited in the ArrayDeque.
+
+4) ArrayDeque class is likely to be faster than Stack when used as a stack.
+
+5) ArrayDeque class is likely to be faster than LinkedList when used as a queue.
+
+2.3) Interfaces implemented by ArrayDeque:
+----------------------------------------------
+
+The ArrayDeque class implements these two interfaces:
+
+1) Queue Interface: It is an Interface that is a FirstIn – FirstOut Data Structure where the elements are added 
+                    from the back.
+2) Deque Interface: It is a Doubly Ended Queue in which you can insert the elements from both sides. 
+                    It is an interface that implements the Queue.
+
+2.4) -> ArrayDeque implements both Queue and Deque. 
+     -> It is dynamically resizable from both sides. 
+     -> All implemented interfaces of ArrayDeque in the hierarchy are Serializable, 
+        Cloneable, Iterable<E>, Collection<E>, Deque<E>, Queue<E>
+
+2.5) Syntax: Declaration
+-----------------------------
+
+a) public class ArrayDeque<E> extends AbstractCollection<E> implements Deque<E>, Cloneable, Serializable
+
+  -> Here, E refers to the element which can refer to any class, such as Integer or String class.
+
+
+2.6) Constructors
+---------------------
+
+1) ArrayDeque dq = new ArrayDeque(): 
+   This is 1st constructor.
+   This constructor is used to create an empty ArrayDeque and by default holds an initial capacity to 
+   hold 16 elements.
+   eg -> ArrayDeque<E> dq = new ArrayDeque<E>();
+
+2) ArrayDeque dq = new ArrayDeque(Collection<? extends E> c); 
+   This is 2nd constructor.
+   This constructor is used to create an ArrayDeque containing all the elements the same as that of the specified 
+   collection.
+   eg -> ArrayDeque<E> dq = new ArrayDeque<E>(Collection col);
+
+3) ArrayDeque dq = new ArrayDeque(int numofElements): 
+   This constructor is used to create an empty ArrayDeque and holds the capacity to contain a specified number 
+   of elements.
+   eg -> ArrayDeque<E> dq = new ArrayDeque<E>(int numofElements);
+
+
+2.7) Methods of ArrayDeque
+-----------------------------
+
+1) Most methods are same as there in Queue Interface.
+   a) For additions -> add(), offer()
+   b) For deletion -> poll(), remove(), clear() - for deleting fully.
+   c) For Cheking top element -> element(), Peek()
+   ===> Other important methods -> size(), stream(), parallelStream(), isEmpty(), 
+
+2) Since elements can be added/removed from both sides, hence few specific methods are there,
+   offerFirst(), offerLast(), getFirst(), getLast(), pollFirst(), pollLast(), removeFirst(), removeLast() 
+
+2.1.1) LinkedList
+--------------------
+Same as Queue Interface LinkedList
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+                                      3.1) LinkedBlockingQueue(C)
+                                   -----------------------------------
+
+1) The LinkedBlockingQueue is an optionally-bounded blocking queue based on linked nodes. 
+
+2) It means that the LinkedBlockingQueue can be bounded, if its capacity is given, else the LinkedBlockingQueue
+   will be unbounded. 
+
+3) The capacity can be given as a parameter to the constructor of LinkedBlockingQueue. 
+
+4) This queue orders elements FIFO. (first-in-first-out) 
+
+5) It means that the head of this queue is the oldest element of the elements present in this queue. 
+
+6) The tail of this queue is the newest element of the elements of this queue. 
+
+7) The newly inserted elements are always inserted at the tail of the queue, and the queue retrieval 
+   operations obtain elements at the head of the queue. 
+   Linked queues typically have higher throughput than array-based queues,
+   but less predictable performance in most concurrent applications.
+
+8) The capacity, if unspecified, is equal to Integer.MAX_VALUE. 
+
+9) Linked nodes are dynamically created upon each insertion, till the capacity of the queue is not filled. 
+
+10) This class and its iterator implement all of the optional methods of the Collection and Iterator interfaces. 
+   It is a member of the Java Collections Framework.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+                                           3.2) PriorityBlockingQueue:
+                                       ------------------------------------
+
+
+1) It is to be noted that both the implementations, the PriorityQueue and LinkedList are not thread-safe. 
+
+2) PriorityBlockingQueue is one alternative implementation if thread-safe implementation is needed. 
+
+3) PriorityBlockingQueue is an unbounded blocking queue that uses the same ordering rules as class PriorityQueue 
+   and supplies blocking retrieval operations. 
+
+4) Since it is unbounded, adding elements may sometimes fail due to resource exhaustion resulting in 
+   OutOfMemoryError. 
+
+3.2.1) methods
+----------------
+Almost all methods of Queue Interface. Refer api for more info.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Map(I) -> refer notes
+
+Important questions
+--------------------
+
+Why Map(I) does not implements Collections(I)...?
+------------------------------------------------------
+
+1) The Map(I) in JAVA follows a (Key,Value) pair structure, whereas
+   A collection(I) is a collection of objects stored in a structured manner with a specified Access Mechanism.
+
+2) The main reason that Map(I) does not implements Collection(I) is that,
+    add() -> add method of Collection(I) does not suppport (Key,Value) pair like Map(I) put(Key,Value) method.
+
+3) Map(I) interface might not implement Collection(I) but it is an very integral part of JAVA's 
+   Collections Framework.

@@ -2,6 +2,8 @@ package com.capg.corejava.interface1;
 
 interface Book {
 	
+	public static final String username = "Ujjwal";
+	
 	public void booktitle();
 	public void bookAuthor();
 	public void bookPrice();

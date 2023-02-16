@@ -10,8 +10,7 @@ class Displayy {
 			System.out.print(i);
 			try {
 				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-			}
+			} catch (InterruptedException e) {}
 		}
 	}
 
@@ -21,8 +20,7 @@ class Displayy {
 			System.out.print((char) i);
 			try {
 				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-			}
+			} catch (InterruptedException e) {}
 		}
 	}
 }
@@ -44,6 +42,7 @@ class MyThreadDemo1 extends Thread {
 
 //Thread Class 2
 class MyThreadDemo2 extends Thread {
+	
 	Displayy d;
 
 	MyThreadDemo2(Displayy d) {
@@ -68,5 +67,4 @@ public class SynchronizationDemo3 {
 		t1.start();
 		t2.start();
 	}
-
 }

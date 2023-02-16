@@ -1,15 +1,12 @@
 package com.corejava.general;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Test {
+	
+	public int[] myarr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 	public static void main(String[] args) {
-
-		List<Integer> list = Arrays.asList(2, 3, 4, 5);
 		
-		list.stream().map(i -> i.toString(2)).forEach(System.out::println);
+		
 
 	}
 

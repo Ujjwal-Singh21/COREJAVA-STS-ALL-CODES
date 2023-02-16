@@ -29,5 +29,4 @@ public class InterruptDemo1 {
 		System.out.println("End of main");
 
 	}
-
 }

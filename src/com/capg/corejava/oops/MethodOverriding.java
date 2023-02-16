@@ -4,21 +4,17 @@ package com.capg.corejava.oops;
 // SAME PARAMETERS
 // SAME RETURN TYPE
 // HAPPENS IN TWO DIFFERENT CLASSES OR INTERFACES THROUGHT INHERITENCE
-
 class MyTest {
 
 	public void display() {
-
-		System.out.println("display method......MyTest");
-
+		System.out.println("display method......Parent");
 	}
 }
 
 public class MethodOverriding extends MyTest {
 
 	public void display() {
-
-		System.out.println("display method......MethodOverriding");
+		System.out.println("display method......Child");
 	}
 
 	public static void main(String[] args) {

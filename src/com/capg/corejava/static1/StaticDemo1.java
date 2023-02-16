@@ -2,8 +2,8 @@ package com.capg.corejava.static1;
 
 public class StaticDemo1 {
 
-	static String cname = "India"; // static variable
-	String myname = "Ujjwal"; // non static variable
+	private static String cname = "India"; // static variable
+	private String myname = "Ujjwal"; // non static variable
 
 	static public void myprint() // static method
 	{
@@ -20,8 +20,8 @@ public class StaticDemo1 {
 
 	public static void main(String[] args) {
 
-		System.out.println(StaticDemo1.cname); // calling static variable classname.variablename
-		StaticDemo1.myprint(); // calling static method classname.methodname
+		System.out.println(StaticDemo1.cname); // calling static variable -> classname.variablename
+		StaticDemo1.myprint(); // calling static method -> classname.methodname
 
 		StaticDemo1 st = new StaticDemo1();
 		st.display(); // calling normal non static method

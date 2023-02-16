@@ -14,13 +14,16 @@ class Display3 {
 		// 1 Lakhs lines of code present here......
 
 		synchronized (Display3.class) {
+			
 			for (int i = 1; i <= 10; i++) {
 				System.out.print("Good Morning: ");
+				
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					System.out.println(e);
 				}
+				
 				System.out.println(name);
 			}
 		}
@@ -59,5 +62,4 @@ public class SynchronizationDemo5 {
 		t2.start();
 
 	}
-
 }

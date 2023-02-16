@@ -1,7 +1,7 @@
-package com.capg.corejava.multhithreading;
+package com.capg.corejava.multhithreadingTelusko;
 
-// by extending Thread class.
-class Hi extends Thread {
+// by implementing runnable interface which has internally only run() method.
+class Hii implements Runnable {
 
 	@Override
 	public void run() {
@@ -17,7 +17,7 @@ class Hi extends Thread {
 	}
 }
 
-class Hello extends Thread {
+class Helloo implements Runnable {
 
 	@Override
 	public void run() {
@@ -32,21 +32,26 @@ class Hello extends Thread {
 	}
 }
 
-public class ThreadDemo1 {
+public class ThreadDemo2 {
 
 	public static void main(String[] args) {
 
-		Hi obj1 = new Hi();
-		Hello obj2 = new Hello();
+		// Hii obj1 = new Hii();
+		Runnable obj1 = new Hii();
+		// Helloo obj2 = new Helloo();
+		Runnable obj2 = new Helloo();
 
-		obj1.start();
+		Thread t1 = new Thread(obj1);
+		Thread t2 = new Thread(obj2);
+
+		t1.start();
 		// to avoid both threads collision
 		try {
-			Thread.sleep(500);
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		obj2.start();
+		t2.start();
 
 	}
 

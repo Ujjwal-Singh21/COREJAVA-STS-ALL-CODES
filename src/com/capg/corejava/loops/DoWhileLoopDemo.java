@@ -9,7 +9,5 @@ public class DoWhileLoopDemo {
 			System.out.println("its do while practice here");
 			i++;
 		} while (i <= 10);
-
 	}
-
 }

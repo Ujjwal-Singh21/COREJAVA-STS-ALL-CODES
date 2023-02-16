@@ -16,6 +16,7 @@ public class DaemonThread1 {
 //		Thread.currentThread().setDaemon(true); // java.lang.IllegalThreadStateException
 		
 		MyThread14 t  = new MyThread14();
+		
 		System.out.println(t.isDaemon()); // false -> daemon nature is inherited from parent thread
 		t.setDaemon(true);
 		System.out.println(t.isDaemon()); //true -> we have manually changed its daemon nature

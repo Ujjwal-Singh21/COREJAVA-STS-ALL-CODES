@@ -21,6 +21,7 @@ public class ArrayDemo1 {
 		System.out.println(marks[2]);
 		System.out.println(marks[3]);
 		System.out.println(marks[4]);
+		
 		System.out.println("SECOND WAY OF PRINTING USING FOR LOOP");
 
 		// SECOND WAY USING FOR LOOP

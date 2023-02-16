@@ -1,10 +1,10 @@
 package com.capg.corejava.MultiThreadingRevision;
 
-//Runnable(I) -> present is Java.lang packanage -> has only one method that is run() method.
+//Runnable(I) -> present is Java.lang package -> has only one method that is run() method.
 //Since it does not have start() method hence we cannot start our thread.
 //Therefore we create Object of Thread(C),
 //And pass the reference of our Runnable Implementation class to Thread class Constructor
-//----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------
 class MyRunnable implements Runnable {
 
 	@Override
@@ -20,10 +20,10 @@ public class RunnableDemo {
 
 	public static void main(String[] args) {
 
-		MyRunnable myRunnable = new MyRunnable();
+		MyRunnable r = new MyRunnable();
 
 		// creating Thread class Object to use its start() method
-		Thread t = new Thread(myRunnable);
+		Thread t = new Thread(r);
 		t.start();
 
 		// Code executed by main thread
@@ -31,5 +31,4 @@ public class RunnableDemo {
 			System.out.println("Main Thread");
 		}
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.capg.corejava.multhithreading;
+package com.capg.corejava.multhithreadingTelusko;
 
 // by implementing runnable interface by removing Separate class for Implementation and by using Inner anonymous class.
 public class ThreadDemo3 {

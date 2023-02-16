@@ -24,15 +24,13 @@ public class ArrayDemo4 {
 
 		// Taking X element to search
 		System.out.println("Enter X value to be searched : ");
-
 		int x = sc.nextInt();
+		
 		for (int i = 0; i < size; i++) {
 
 			if (x == numbers[i])
 				System.out.println("x found at Index no :" + i);
 
 		}
-
 	}
-
 }

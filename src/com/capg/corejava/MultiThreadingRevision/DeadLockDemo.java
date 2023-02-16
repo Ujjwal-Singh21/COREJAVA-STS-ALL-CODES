@@ -1,19 +1,19 @@
 package com.capg.corejava.MultiThreadingRevision;
 
-//In this program if we remove atleast 1 synchronized keyword from any of the methods,
-//Then the program will not enter into DeadLock situation,
-//Hence synchronized keyword is the only reason for DEADLOCK SITUATION.
-//So take special care while using synchronized keyword.
-//-------------------------------------------------------------------------------------------
+// In this program if we remove atleast 1 synchronized keyword from any of the methods,
+// Then the program will not enter into DeadLock situation,
+// Hence synchronized keyword is the only reason for DEADLOCK SITUATION.
+// So take special care while using synchronized keyword.
+//--------------------------------------------------------------------------------------
 class A {
 
 	public synchronized void d1(B b) {
+		
 		System.out.println("Thread 1 (Main Thread) starts execution of d1 method");
 
 		try {
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-		}
+		} catch (InterruptedException e) {}
 
 		System.out.println("Thread 1 trying to call last() method from B");
 		b.last();
@@ -31,8 +31,7 @@ class B {
 
 		try {
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-		}
+		} catch (InterruptedException e) {}
 
 		System.out.println("Thread 2 trying to call last() method from A");
 		a.last();
@@ -69,5 +68,4 @@ public class DeadLockDemo {
 		d.m1();
 
 	}
-
 }

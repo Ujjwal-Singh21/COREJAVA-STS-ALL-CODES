@@ -5,7 +5,7 @@ import java.util.Scanner;
 // sc.nextFloat()    - reads an float value from user.
 // sc.nextBoolean()  - reads an boolean value from user.
 // sc.nextLine()     - reads a line of text or string value from user.
-// System.in         - standard input keyword for scanner class in java.
+// System.in         - standard input from keyword for scanner class in java.
 //----------------------------------------------------------------------
 public class ScannerDemo1 {
 

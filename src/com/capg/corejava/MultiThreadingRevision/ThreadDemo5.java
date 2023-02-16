@@ -24,7 +24,7 @@ public class ThreadDemo5 {
 		System.out.println(t.getName()); // -> User First Thread
 
 		// Since we have changed the name of main thread
-		// Now it will say exception in thread -> Main thread name by user
+		// Now it will say exception in thread -> "User main" java.lang.ArithmeticException: / by zero
 		System.out.println(10 / 0);
 
 	}

@@ -17,7 +17,6 @@ class ThreadB extends Thread {
 
 			System.out.println("Child Thread Completes Calculation & Trying To Give Notification");
 			this.notify();
-
 		}
 	}
 }
@@ -29,21 +28,19 @@ public class InterThreadCommunicationDemo {
 		ThreadB b = new ThreadB();
 		b.start();
 		
-//		Thread.sleep(2000);
+		Thread.sleep(2000);
 
 		synchronized (b) {
 
 			System.out.println("Main Thread Trying To Call Wait Method");
 
-			b.wait(); //main thread releases the LOCK immediately and enters into waiting state
+//			b.wait(); //main thread releases the LOCK immediately and enters into waiting state
 			
-//			b.wait(5000); // to avoid deadlock
+			b.wait(5000); // to avoid deadlock
 
 			System.out.println("Main Thread Got Notification From Child Thread");
 
 			System.out.println(b.total);
 		}
-
 	}
-
 }
