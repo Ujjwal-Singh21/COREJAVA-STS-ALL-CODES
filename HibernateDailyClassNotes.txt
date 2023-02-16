@@ -1,0 +1,1586 @@
+Hibernate:
+==========
+Hibernate is a back-end side framework which is used in java,
+Hibernate is advanced to JDBC Technology and Hibernate is also known as an ORM Framework.
+
+ORM Means Object Relational Mapping and it is a theoretical approach which provides a concept of converting 
+Java Object to Database and Vice-versa.
+
+JAVA CLASS
+(MODELCLASS or BeanClass)=============>MAPPINGFILES(XML)================>Database Table
+
+Framework:
+==========
+Framework is nothing but a project or set of technologies which can be implemented into our programming languages for 
+developing or designing the code in rapid fast manner.
+
+Every Programming Languages Supports Frameworks,Frameworks Supported Programming Languages are :
+ 1) Java(Spring,Hibernate),
+ 2) Python(Django,Flask,Bottle,GoogleAppengine),
+ 3) .net with MVC Architecture Framework,
+ 4) Php(Codignator,Laravel Frameworks).
+
+JDBC IS THERE THEN STILL WHY WE ARE USING HIBERNATE FRAMEWORK IN JAVA.
+
+The major overall problems faced while using jdbc:
+==================================================
+1) For each and every jdbc programs every time we have to establish the Database Connection.
+
+2) Every Time in each and Every Jdbc Application we must have to implement the SQL Query Operation.
+
+3) To Overcome the Problems using Jdbc In Java We are using the concept of Hibernate is also known as a ORM framework.
+
+Hibernate Framework will follows the API'S like:
+------------------------------------------------ 
+JDBC ==>   Java Database Connectivity.
+JNDI ==>   Java Naming Directory Interface.
+JTA  ==>   Java Transaction Api.
+And Also Using Xml Files(Non-Java Technology).
+
+-> Hibernate Mainly Provides the Inbuilt Persistenc API to Perform SingleRowOperations without Writing SQL Queries 
+By Programmer,Those are Like(Save(),Delete(),Update(),read(get() and load()).
+
+-> SQL is a Common Language for all the databases and Sql is dependent and different for all the databases,
+ means sql query has some changes from database to database.
+
+-> Hibernate Provides HQL(Hibernate Query Language) which is database Independent.
+
+Dialect is a class concept that generates SQL queries for Databases.
+
+  Ex:
+  ==
+   Oracle Dialect ==> org.hibernate.Oracle10gDialect
+   MySQL Dialect ===> org.hibernate.MYSQLDialect
+   Postgres Dialect ===> org.hibernate.dialect.PostgreSQLDialect
+
+org.hibernate.dialect.OracleDialect==>this dialect is used for every oracle version.
+
+Hiberate Supports collections mapping also, and so it allows us to use List,Set,Map Collections.
+
+
+Hibernate Application 1:
+=======================
+
+step1:
+=====
+Create a Java Bean Class Or Java Model Class.
+
+step2:
+======
+create a hibernate mapping file is <filename>.hbm.xml which is used to bind the Java Class with database table.
+
+ex:
+===
+employee.hbm.xml
+student.hbm.xml
+
+step3:
+======
+Create a hibernate configuration mapping file which is hibernate.cfg.xml which is used to provides details like 
+Database Connection Properties, hibernate properties.
+
+ex:
+===
+hibernate.cfg.xml
+
+step4:
+=====
+finally creates the java code like transactions to map the both mapping files followed with bean class to performs 
+inside of the given database.
+
+step5:
+=====
+To create a hibernate application in eclipse we can change the mode into JSE perspective.
+
+Open cmd Prompt==>Then Type Below Command
+
+mysql -uroot -hlocalhost -p==>enter
+password : root
+
+create database hibernatefirstdb;
+
+          or
+
+create schema hibernatefirstdb;
+
+database table is also known as a objects and database is known as schema or database.
+
+row is also known as a records or tuple and column is known as a fields or attributes.
+
+
+ses.update(referencevariable)
+based on the primary key like we are updating the data.
+
+update emptable set empname='suresh',empsal=95000.00 where empno=7888;
+
+saving extra or more than one rows into the database table:
+==========================================================
+step1:
+======
+in hibernate.cfg.xml==> <property name="hbm2ddl.auto"> update </property>
+
+test.java code:
+================
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+	public static void main (String[] arg)
+	{ 
+		Configuration cfg = new Configuration(); 
+		cfg = cfg.configure();
+
+		SessionFactory sf = cfg.buildSessionFactory(); 
+		Session ses = sf.openSession();
+
+         Transaction tx = ses.beginTransaction(); 
+		tx.begin();
+
+		Employee stu = new Employee();
+                stu.setEmpno(5685);  //primary key ==> unique+not null
+                stu.setEmpname("mahesh");
+                stu.setEmpsal(858585.00);
+                System.out.println(stu);
+
+                ses.save(stu);
+                tx.commit();
+                ses.close();
+                //System.out.println(stu);
+                System.out.println("done");
+      }
+}
+
+update the data inside of the database table:
+=============================================
+step1:
+======
+in hibernate.cfg.xml==> <property name="hbm2ddl.auto"> update </property>
+
+test.java code:
+===============
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+	public static void main (String[] arg)
+	{ 
+		Configuration cfg = new Configuration(); 
+		cfg = cfg.configure();
+
+		SessionFactory sf = cfg.buildSessionFactory(); 
+		Session ses = sf.openSession();
+
+         Transaction tx = ses.beginTransaction(); 
+		tx.begin();
+
+		Employee stu = new Employee();
+                stu.setEmpno(5685);   // primary key==>unique+not null
+                stu.setEmpname("mahesh");
+                stu.setEmpsal(858585.00);
+                System.out.println(stu);
+
+                ses.update(stu);
+                tx.commit();
+                ses.close();
+
+                //System.out.println(stu);
+                System.out.println("done");
+      }
+}
+
+deleting the data or rows inside of the database table:
+=======================================================
+step1:
+======
+in hibernate.cfg.xml==> <property name="hbm2ddl.auto"> update </property>
+
+test.java code:
+================
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+	public static void main (String[] arg)
+	{ 
+		Configuration cfg = new Configuration(); 
+		cfg = cfg.configure();
+
+		SessionFactory sf = cfg.buildSessionFactory(); 
+		Session ses = sf.openSession();
+
+         Transaction tx = ses.beginTransaction(); 
+		tx.begin();
+
+		Employee stu = new Employee();
+                stu.setEmpno(5685); //primary key==>unique+not null
+                System.out.println(stu);
+
+                ses.delete(stu);
+                tx.commit();
+                ses.close();
+
+                //System.out.println(stu);
+                System.out.println("done");
+      }
+}
+
+
+get():
+=====
+this method is defined in session api, it returns database record or row to java object on the primary key in 
+serializable format.
+
+get method takes 2 parameters,class notation and primary key value.
+
+Example using get():
+====================
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+	public static void main (String[] arg)
+	{ 
+		Configuration cfg = null;
+		SessionFactory sf = null;
+		Session ses = null;
+		try
+		{
+			cfg = new Configuration(); 
+			cfg = cfg.configure();
+
+			sf = cfg.buildSessionFactory(); 
+			ses = sf.openSession();
+
+			Object ob = ses.get("com.app.Employee",7888);
+			Employee emp = (Employee)ob;
+       }
+	   catch(Exception e)
+	   {
+		   e.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(ses!=null)
+		   {
+			   ses.close();
+		   }
+	   }
+	System.out.println("Done");
+	}
+}
+
+
+Hibernate using Collections:
+===========================
+
+Collections:
+===========
+1) Collections is a group of elements, which are Stored into Single Entity or Object.
+
+2) All the Collections Represented Concepts are Present inside of the java.util package.
+   Corejava Perspective==>java.lang, java.util, java.io, java.time and so on.
+
+3) To Visit to api documentation===>go to google==>java api 1/2/3/4/5/6/7/8/9/10.
+
+4) api is a collection of packages.
+
+5) package is nothing but a folder,it contains a collection of classes, interfaces, exceptions, errors, enums and 
+   annotations.
+
+6) We can create an object for class(100 percent) and we cannot create an object for interface(directly),but still 
+   we have a chance to create a 50 percent object creation for interface(indirectly).
+
+7) We can creates a 50 percent object creation for an interface through its interface implemented class.
+
+interface I
+{
+  //defines an abstract methods
+}
+class A implements I
+{
+    I i1=new A();(Valid)
+    I i2=new I();(Invalid)
+}
+
+castings, boxings(boxing,unboxing,autoBoxing,autoUnboxing), for each or iterator loop.
+
+two types of loops:
+==================
+a) Normal For loop(is there in java 1st onwards)
+b) For-each or iterator loop(introduced in java 5th version)
+
+Collections Represented Interfaces Are as Follows:
+
+a)List(I):
+=========
+*) List is a Predefined Interface,which is present inside of the java.util package.
+*) Insertion is Preserved.
+*) List is using add() to store the data.
+*) Duplicate Elements are allowed.
+*) Supports Both Homogeneous and Hetrogeneous type of elements.
+
+Mapping collection in mapping file:
+-------------------------------------
+There are many subelements of <class> elements to map the collection.
+They are <list>, <bag>, <set> and <map>. 
+Let's see how we implement the list for the above class:
+
+Notes:
+------
+<class name="com.javatpoint.Question" table="q100">  
+
+          <id name="id">  
+          <generator class="increment"></generator>  
+          </id>  
+
+          <property name="qname"></property>  
+            
+          <list name="answers" table="ans100">  
+            <key column="qid"></key>  
+            <index column="type"></index>  
+            <element column="answer" type="string"></element>  
+          </list>  
+            
+ </class>  
+
+
+<key> ==> element is used to define the foreign key in this table based on the Question class identifier.
+
+<index> ==> element is used to identify the type. List and Map are indexed collection.
+
+<element> ==> is used to define the element of the collection.
+
+-> This is the mapping of collection if collection stores string objects. 
+-> But if collection stores entity reference (another class objects), 
+-> We need to define <one-to-many> or <many-to-many> element.
+-> Now the Persistent class will look like:
+
+
+Program:
+========
+
+package com.javatpoint;  
+import java.util.List;  
+  
+public class Question {  
+  private int id;  
+  private String qname;  
+  private List<Answer> answers;//Here, List stores the objects of Answer class  
+  
+//getters and setters  
+  
+}
+
+
+-------------------------------------------------------------------------------------
+  
+package com.javatpoint;  
+import java.util.List;
+  
+public class Answer {  
+  private int id;  
+  private String answer;  
+  private String posterName;  
+//getters and setters  
+}  
+
+Now the mapping file will be:
+-----------------------------
+
+<class name="com.javatpoint.Question" table="q100"> 
+ 
+          <id name="id">  
+          <generator class="increment"></generator>  
+          </id>  
+
+          <property name="qname"></property>  
+            
+          <list name="answers" >  
+            <key column="qid"></key>  
+            <index column="type"></index>  
+            <one-to-many class="com.javatpoint.Answer" />  
+          </list>  
+            
+ </class>  
+
+Here, List is mapped by one-to-many relation. In this scenario, there can be many answers for one question.
+
+Understanding key element:
+--------------------------
+-> The key element is used to define the foreign key in the joined table based on the original identity. 
+-> The foreign key element is nullable by default. 
+-> So for non-nullable foreign key, we need to specify not-null attribute such as:
+
+   <key column="qid" not-null="true" ></key>  
+
+-> The attributes of the key element are column, on-delete, property-ref, not-null, update and unique.
+
+<key  
+column="columnname"  
+on-delete="noaction|cascade"  
+not-null="true|false"  
+property-ref="propertyName"  
+update="true|false"  
+unique="true|false"  
+/>  
+
+
+
+Indexed collections:
+--------------------
+The collection elements can be categorized in two forms:
+
+1) indexed ,and
+2) non-indexed
+
+   The List and Map collection are indexed whereas set and bag collections are non-indexed. 
+   Here, indexed collection means List and Map requires an additional element <index>.
+
+Collection Elements
+The collection elements can have value or entity reference (another class object). We can use one of the 4 elements
+
+1) element
+2) component-element
+3) one-to-many, or
+4) many-to-many
+
+The element and component-element are used for normal value such as string, int etc. 
+whereas one-to-many and many-to-many are used to map entity reference.
+
+
+ 
+--------------------------------------------------------------------------------------------------------------------
+
+
+b)Set(I):
+========
+*) Set is a Predefined Interface,which is present inside of the java.util package.
+*) Insertion is not Preserved..
+*) Set is using add() to store the data.
+*) Duplicate Elements are not allowed.
+*) Supports Both Homogeneous and Hetrogeneous type of elements.
+
+
+Hibernate Mapping Set using XML
+================================
+
+-> If our persistent class has Set object, we can map the Set by set element in the mapping file. 
+-> The set element doesn't require index element. 
+-> The one difference between List and Set is that, it stores only unique values.
+
+Let's see how we can implement the set in the mapping file:
+------------------------------------------------------------
+
+<class name="com.javatpoint.Question" table="q1002">  
+       ...        
+          <set name="answers" table="ans1002">  
+          <key column="qid"></key>  
+          <element column="answer" type="string"></element>  
+          </set>  
+            
+       ...  
+</class>  
+
+
+Example of mapping set in collection mapping
+--------------------------------------------
+-> In this example, we are going to see full example of collection mapping by set. 
+-> This is the example of set that stores value not entity reference that is why are going to use element instead of 
+one-to-many.
+
+
+1) Create the Persistent class.
+   This persistent class defines properties of the class including Set.
+
+
+Program:
+========
+
+package com.javatpoint;  
+import java.util.Set;  
+  
+public class Question {  
+private int id;  
+private String qname;  
+private Set<String> answers;  
+  
+//getters and setters  
+  
+}  
+
+
+2) Create the Mapping file for the persistent class
+Here, we have created the question.hbm.xml file for defining the list.
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+  
+<hibernate-mapping>  
+ <class name="com.javatpoint.Question" table="q1002">  
+   <id name="id">  
+     <generator class="increment"></generator>  
+   </id>  
+   <property name="qname"></property>  
+            
+   <set name="answers" table="ans1002">  
+     <key column="qid"></key>  
+     <element column="answer" type="string"></element>  
+   </set>  
+            
+ </class>  
+            
+</hibernate-mapping>  
+
+
+
+3) create the configuration file
+This file contains information about the database and mapping file.
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+  
+<hibernate-configuration>  
+    <session-factory>  
+        <property name="hbm2ddl.auto">update</property>  
+        <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>  
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  
+        <property name="connection.username">system</property>  
+        <property name="connection.password">jtp</property>  
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+        <mapping resource="question.hbm.xml"/>  
+    </session-factory>  
+</hibernate-configuration>  
+
+
+4) Create the class to store the data
+In this class we are storing the data of the question class.
+
+package com.javatpoint;    
+import java.util.HashSet;      
+import org.hibernate.*;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;   
+    
+public class StoreData {    
+ public static void main(String[] args) {    
+      
+     StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+        Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+          
+        SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+        Session session=factory.openSession();  
+       
+ Transaction t=session.beginTransaction();    
+        
+    
+    HashSet<String> set1=new HashSet<String>();    
+    set1.add("Java is a programming language");    
+    set1.add("Java is a platform");    
+        
+    HashSet<String> set2=new HashSet<String>();    
+    set2.add("Servlet is an Interface");    
+    set2.add("Servlet is an API");    
+        
+    Question question1=new Question();    
+    question1.setQname("What is Java?");    
+    question1.setAnswers(set1);    
+        
+    Question question2=new Question();    
+    question2.setQname("What is Servlet?");    
+    question2.setAnswers(set2);    
+        
+    session.persist(question1);    
+    session.persist(question2);    
+        
+    t.commit();    
+    session.close();    
+    System.out.println("success");    
+ }    
+}    
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+-> How to fetch the data of Set
+-> Here, we have used HQL to fetch all the records of Question class including answers. 
+-> In such case, it fetches the data from two tables that are functional dependent.
+========================================================================================
+
+package com.javatpoint;    
+import java.util.*;  
+import javax.persistence.TypedQuery;  
+import org.hibernate.*;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;  
+    
+public class FetchData {    
+public static void main(String[] args) {    
+        
+     StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+        Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+          
+        SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+        Session session=factory.openSession();  
+       
+ Transaction t=session.beginTransaction();    
+        
+    TypedQuery query=session.createQuery("from Question");    
+    List<Question> list=query.getResultList();    
+        
+    Iterator<Question> itr=list.iterator();    
+    while(itr.hasNext()){    
+        Question q=itr.next();    
+        System.out.println("Question Name: "+q.getQname());    
+            
+        //printing answers    
+        Set<String> set=q.getAnswers();    
+        Iterator<String> itr2=set.iterator();    
+        while(itr2.hasNext()){    
+            System.out.println(itr2.next());    
+        }    
+            
+    }    
+    session.close();    
+    System.out.println("success");    
+        
+}    
+}    
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+c)Map(I):
+========
+*) Map is a Predefined Interface,which is present inside of the java.util package.
+*) Map Can allows the data in the key-value pair based.
+*) Map is using put() to store the key-value data.
+*) Insertion is Pressured.
+*) Duplicate Elements are alowed.
+*) Supports Both Homogeneous and Hetrogeneous type of elements.
+
+in db point of view tuple is also called as a row or record.
+in python point of view tuple is a collection datatype.
+
+
+Hibernate Mapping Map using xml file :
+=======================================
+-> Hibernate allows you to map Map elements with the RDBMS.
+-> As we know, list and map are index-based collections. 
+-> In case of map, index column works as the key and element column works as the value.
+
+-> Example of Mapping Map in collection mapping using xml file
+-> You need to create following pages for mapping map elements.
+
+Question.java
+question.hbm.xml
+hibernate.cfg.xml
+StoreTest.java
+FetchTest.java
+Question.java
+
+
+Program:
+========
+
+package com.javatpoint;  
+import java.util.Map;  
+  
+public class Question {  
+private int id;  
+private String name,username;  
+private Map<String,String> answers;  
+  
+public Question() {}  
+public Question(String name, String username, Map<String, String> answers) {  
+    super();  
+    this.name = name;  
+    this.username = username;  
+    this.answers = answers;  
+}  
+public int getId() {  
+    return id;  
+}  
+public void setId(int id) {  
+    this.id = id;  
+}  
+public String getName() {  
+    return name;  
+}  
+public void setName(String name) {  
+    this.name = name;  
+}  
+public String getUsername() {  
+    return username;  
+}  
+public void setUsername(String username) {  
+    this.username = username;  
+}  
+public Map<String, String> getAnswers() {  
+    return answers;  
+}  
+public void setAnswers(Map<String, String> answers) {  
+    this.answers = answers;  
+}  
+}  
+
+
+
+question.hbm.xml
+=================
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+            
+<hibernate-mapping>  
+  
+<class name="com.javatpoint.Question" table="question736">  
+<id name="id">  
+<generator class="native"></generator>  
+</id>  
+<property name="name"></property>  
+<property name="username"></property>  
+  
+<map name="answers" table="answer736" cascade="all">  
+<key column="questionid"></key>  
+<index column="answer" type="string"></index>  
+<element column="username" type="string"></element>  
+</map>  
+</class>  
+  
+</hibernate-mapping> 
+
+
+                   
+hibernate.cfg.xml
+==================
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+  
+<hibernate-configuration>  
+  
+    <session-factory>  
+        <property name="hbm2ddl.auto">update</property>  
+        <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>  
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  
+        <property name="connection.username">system</property>  
+        <property name="connection.password">jtp</property>  
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+      
+    <mapping resource="question.hbm.xml"/>  
+    </session-factory>  
+  
+</hibernate-configuration> 
+ 
+
+
+StoreTest.java
+===============
+
+package com.javatpoint;        
+import java.util.HashMap;    
+import org.hibernate.*;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;    
+  
+  
+public class StoreTest {    
+public static void main(String[] args) {    
+   
+    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+      
+    SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+    Session session=factory.openSession();  
+   
+Transaction t=session.beginTransaction();    
+    
+HashMap<String,String> map1=new HashMap<String,String>();    
+map1.put("Java is a programming language","John Milton");    
+map1.put("Java is a platform","Ashok Kumar");    
+    
+HashMap<String,String> map2=new HashMap<String,String>();    
+map2.put("Servlet technology is a server side programming","John Milton");    
+map2.put("Servlet is an Interface","Ashok Kumar");    
+map2.put("Servlet is a package","Rahul Kumar");    
+    
+Question question1=new Question("What is Java?","Alok",map1);    
+Question question2=new Question("What is Servlet?","Jai Dixit",map2);    
+    
+session.persist(question1);    
+session.persist(question2);    
+    
+t.commit();    
+session.close();    
+System.out.println("successfully stored");    
+}    
+}    
+
+
+FetchTest.java
+===============
+package com.javatpoint;    
+import java.util.*;  
+import javax.persistence.TypedQuery;  
+import org.hibernate.*;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;  
+   
+public class FetchTest {    
+public static void main(String[] args) {    
+    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+      
+    SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+    Session session=factory.openSession();    
+            
+ TypedQuery query=session.createQuery("from Question ");    
+ List<Question> list=query.getResultList();    
+            
+ Iterator<Question> iterator=list.iterator();    
+ while(iterator.hasNext()){    
+  Question question=iterator.next();    
+  System.out.println("question id:"+question.getId());    
+  System.out.println("question name:"+question.getName());    
+  System.out.println("question posted by:"+question.getUsername());    
+  System.out.println("answers.....");    
+  Map<String,String> map=question.getAnswers();    
+  Set<Map.Entry<String,String>> set=map.entrySet();    
+                
+  Iterator<Map.Entry<String,String>> iteratoranswer=set.iterator();    
+  while(iteratoranswer.hasNext()){    
+   Map.Entry<String,String> entry=(Map.Entry<String,String>)iteratoranswer.next();    
+   System.out.println("answer name:"+entry.getKey());    
+   System.out.println("answer posted by:"+entry.getValue());    
+  }    
+ }    
+session.close();    
+}    
+}    
+
+key tag:
+=======
+The <key> element is the column in the db table that holds the foreign key to the parent object i.e. table EMPLOYEE.
+
+id tag:
+======
+1) The <id> element maps the unique ID attribute in class to the primary key of the database table. 
+
+2) The name attribute of the id element refers to the property in the class and the column attribute refers to the 
+   column name in the database table. 
+
+3) The type attribute holds the hibernate mapping type, this mapping types will convert from Java to SQL data type.
+
+index tag:
+=========
+1) The <list-index> element is used to keep the position of the element and map with the index column in the 
+   collection table. 
+
+2) The index of the persistent list starts at zero. 
+
+3) We can also change this index positions.
+
+Example: 
+========
+<list-index base="1".../> in our filename.hbm.xml mapping file.
+
+Employee.java:
+=============
+package com.app;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Employee 
+{
+   private int empNo;
+   private String empName;
+   private double empSal;
+   private List<String> empListProj;
+   private Set<String>	empSetProj;
+   private Map<String,String> empMapProj;
+
+public int getEmpNo() {
+	return empNo;
+}
+public void setEmpNo(int empNo) {
+	this.empNo = empNo;
+}
+public String getEmpName() {
+	return empName;
+}
+public void setEmpName(String empName) {
+	this.empName = empName;
+}
+public double getEmpSal() {
+	return empSal;
+}
+public void setEmpSal(double empSal) {
+	this.empSal = empSal;
+}
+public List<String> getEmpListProj() {
+	return empListProj;
+}
+public void setEmpListProj(List<String> empListProj) {
+	this.empListProj = empListProj;
+}
+public Set<String> getEmpSetProj() {
+	return empSetProj;
+}
+public void setEmpSetProj(Set<String> empSetProj) {
+	this.empSetProj = empSetProj;
+}
+public Map<String, String> getEmpMapProj() {
+	return empMapProj;
+}
+public void setEmpMapProj(Map<String, String> empMapProj) {
+	this.empMapProj = empMapProj;
+}
+@Override
+public String toString() {
+	return "Employee [empNo=" + empNo + ", empName=" + empName + ", empSal="
+			+ empSal + ", empListProj=" + empListProj + ", empSetProj="
+			+ empSetProj + ", empMapProj=" + empMapProj + "]";
+}
+   
+
+}
+
+
+
+employee.hbm.xml:
+=================
+<!DOCTYPE hibernate-mapping PUBLIC
+
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.app.Employee" table="emptable">
+
+<id name="empNo" column="empno" type="int"/>
+<property name="empName" column="empname" type="string" length="20"/>
+<property name="empSal" column="empsal" type="double"/>
+
+    <list name="empListProj" table="emplistprojtab">
+      <key column="emplistprojfk"/>
+      <index column="position"/>
+      <element column="data" type="string"/> 
+   </list>
+
+   <set name="empSetProj" table="empsetprojtab">
+     <key column="empsetprojfk" />
+     <element column="data" type="string"/> 
+  </set>
+
+    <map name="empMapProj" table="empmapprojtab">
+      <key column="empmapprojfk"/>
+      <index column="position" type="string"/> 
+      <element column="data" type="string"/> 
+    </map>
+
+</class>
+
+</hibernate-mapping>
+
+Note: (<mapping resource="employee.hbm.xml"/> ==> The Hibernate configuration file must define the entity classes:)
+hibernate.cfg.xml: 
+=================
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+  <session-factory>
+    <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+	<property name="connection.username">system</property>
+	<property name="connection.password">surya</property>
+	<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+	<property name="show_sql">true</property>
+	<property name="format_sql">true</property>
+	<property name="hbm2ddl.auto">create</property>
+   <mapping resource = "employee.hbm.xml"/>
+  </session-factory>
+
+</hibernate-configuration>
+
+Test.java:
+=========
+package com.app;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction; 
+import org.hibernate.cfg.Configuration;
+public class Test 
+{
+    public static void main (String[] arg)
+    {
+    	Configuration cfg = new Configuration().configure(); 
+
+    	SessionFactory sf = cfg.buildSessionFactory(); 
+    	Session ses = sf.openSession();
+
+        Transaction tx = ses.beginTransaction(); 
+        tx.begin();
+        
+        //Collections Implementations
+        List<String> emplist=new ArrayList<String>();
+        emplist.add("asdf");
+        emplist.add("mnop");
+        emplist.add("ghij");
+        emplist.add("pqrst");
+ 
+        Set<String> empset=new HashSet<String>();
+        empset.add("A"); 
+        empset.add("B"); 
+        empset.add("C"); 
+        empset.add("D");
+ 
+        Map<String,String> empmap = new HashMap<String,String>();
+        empmap.put("k1", "v1");
+        empmap.put("k2", "v2");
+        empmap.put("k3", "v3");
+        empmap.put("k4", "v4");
+
+        Employee emp = new Employee();
+        emp.setEmpNo(101);
+        emp.setEmpName("Ramesh");
+        emp.setEmpSal(34555.00);
+        emp.setEmpListProj(emplist);
+        emp.setEmpSetProj(empset);
+        emp.setEmpMapProj(empmap);
+
+        ses.save(emp);
+        tx.commit();
+        ses.close();
+    }
+}
+
+
+output:
+======
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: 
+    insert 
+    into
+        emptable
+        (empname, empsal, empno) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        emplistprojtab
+        (emplistprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        emplistprojtab
+        (emplistprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        emplistprojtab
+        (emplistprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        emplistprojtab
+        (emplistprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        empsetprojtab
+        (empsetprojfk, data) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        empsetprojtab
+        (empsetprojfk, data) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        empsetprojtab
+        (empsetprojfk, data) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        empsetprojtab
+        (empsetprojfk, data) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        empmapprojtab
+        (empmapprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        empmapprojtab
+        (empmapprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        empmapprojtab
+        (empmapprojfk, position, data) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        empmapprojtab
+        (empmapprojfk, position, data) 
+    values
+        (?, ?, ?)
+
+
+Steps For Creating and Running The Hibernate Application:
+========================================================
+*) Create the java project using JSE Perspective in Eclipse.
+*) Add jar files for hibernate application using BuildPath Concept.
+*) Create the Persistent class(Bean Class Or Model Class).
+*) Create the mapping file for Persistent class(filename.hibernate.xml file).
+*) Create the Hibernate Configuration Mapping file(hibernate.cfg.xml).
+*) Create the class that retrieves or stores the persistent object.
+*) Finally Run The Application.
+
+get():
+======
+1) This method returns a persistence or model or bean class object of the given class with the given identifier.
+(POJO===>plan old java object)
+
+2) It will return null if there is no persistence object.
+
+example:
+=======
+java.lang.NullPointerException
+
+example program using get method:
+=================================
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+   public static void main (String[] arg)
+   { 
+	   Configuration cfg=null;
+	   SessionFactory sf=null;
+	   Session ses=null;
+	   try
+	   {
+		   cfg=new Configuration(); 
+		   cfg=cfg.configure();
+
+		   sf=cfg.buildSessionFactory(); 
+		   ses=sf.openSession();
+
+		   Transaction tx=ses.beginTransaction(); 
+		   tx.begin();
+
+		   Employee emp = (Employee) ses.get(Employee.class,9857);
+		   System.out.println(emp.getEmpno() + "  " +emp.getEmpname()+ "  " +emp.getEmpsal());
+
+		   System.out.println(ses.getEntityName(emp));
+		   ses.getTransaction();
+		   tx.commit();
+		   System.out.println("done");
+	   }
+	   catch(Exception e)
+	   {
+		   e.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(ses!=null)
+		   {
+			   ses.close();
+		   }
+	   }
+   }
+}
+
+
+
+load():
+======
+*) This method returns a persistence object or bean or model class object of the given class with the given identifier. 
+*) It will throw an exception ObjectNotFoundException,if an entity does not exist in the database. 
+example exception:
+==================
+org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [com.app.Employee#7789].
+
+Example:
+========
+package com.app;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Test 
+{
+   public static void main (String[] arg)
+   { 
+	   Configuration cfg=new Configuration(); 
+	   cfg=cfg.configure();
+
+	   SessionFactory sf=cfg.buildSessionFactory(); 
+	   Session ses=sf.openSession();
+
+	   Transaction tx=ses.beginTransaction(); 
+	   tx.begin();
+
+	   Employee emp = (Employee) ses.load(Employee.class,7888);
+	      System.out.println(emp.getEmpno() + " " +emp.getEmpname()+ " - " +emp.getEmpsal());
+	      System.out.println(ses.getEntityName(emp));
+	      ses.getTransaction().commit();
+	      System.out.println("done");
+ }
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+Mappings in Hibernate using both XML and Annotations:
+======================================================
+
+
+Hibernate One to Many Example using XML:
+----------------------------------------
+-> If the persistent class has list object that contains the entity reference, 
+-> we need to use one-to-many association to map the list element.
+
+-> Here, we are using the scenario of Forum where one question has multiple answers.
+
+One to Many mapping in Hibernate by List
+----------------------------------------
+In such case, there can be many answers for a question and each answer may have its own informations that is why we have used list 
+in the persistent class (containing the reference of Answer class) to represent a collection of answers.
+
+-> Let's see the persistent class that has list objects (containing Answer class objects).
+
+
+package com.javatpoint;  
+
+import java.util.List;  
+  
+public class Question {  
+private int id;  
+private String qname;  
+private List<Answer> answers;  
+//getters and setters  
+  
+}  
+
+----------------------------------------------------------------------------------------------
+
+The Answer class has its own informations such as id, answername, postedBy etc.
+
+package com.javatpoint;  
+  
+public class Answer {  
+private int id;  
+private String answername;  
+private String postedBy;  
+//getters and setters  
+  
+}  
+}  
+
+
+-> The Question class has list object that have entity reference (i.e. Answer class object). 
+-> In such case, we need to use one-to-many of list to map this object. Let's see how we can map it.
+
+<list name="answers" cascade="all">  
+          <key column="qid"></key>  
+          <index column="type"></index>  
+          <one-to-many class="com.javatpoint.Answer"/>  
+</list>  
+
+Full example of One to Many mapping in Hibernate by List
+In this example, we are going to see full example of mapping list that contains entity reference.
+
+1) Create the Persistent class
+This persistent class defines properties of the class including List.
+
+Question.java
+==============
+package com.javatpoint;  
+  
+import java.util.List;  
+  
+public class Question {  
+private int id;  
+private String qname;  
+private List<Answer> answers;  
+  
+//getters and setters  
+  
+}  
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Answer.java
+============
+package com.javatpoint;  
+  
+public class Answer {  
+private int id;  
+private String answername;  
+private String postedBy;  
+//getters and setters  
+  
+}  
+}  
+
+
+
+2) Create the Mapping file for the persistent class
+Here, we have created the question.hbm.xml file for defining the list.
+=======================================================================
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+  
+          <hibernate-mapping>  
+          <class name="com.javatpoint.Question" table="q501">  
+          <id name="id">  
+          <generator class="increment"></generator>  
+          </id>  
+          <property name="qname"></property>  
+            
+          <list name="answers" cascade="all">  
+          <key column="qid"></key>  
+          <index column="type"></index>  
+          <one-to-many class="com.javatpoint.Answer"/>  
+          </list>  
+            
+          </class>  
+            
+          <class name="com.javatpoint.Answer" table="ans501">  
+          <id name="id">  
+          <generator class="increment"></generator>  
+          </id>  
+          <property name="answername"></property>  
+          <property name="postedBy"></property>  
+          </class>  
+            
+          </hibernate-mapping>  
+
+
+
+3) Create the configuration file
+This file contains information about the database and mapping file.
+=====================================================================
+
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-5.3.dtd">  
+  
+<!-- Generated by MyEclipse Hibernate Tools.                   -->  
+<hibernate-configuration>  
+  
+    <session-factory>  
+        <property name="hbm2ddl.auto">update</property>  
+        <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>  
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  
+        <property name="connection.username">system</property>  
+        <property name="connection.password">jtp</property>  
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+    <mapping resource="question.hbm.xml"/>  
+    </session-factory>  
+  
+</hibernate-configuration> 
+
+ 
+4) Create the class to store the data
+In this class we are storing the data of the question class.
+=============================================================
+
+package com.javatpoint;    
+  
+import java.util.ArrayList;    
+import org.hibernate.Session;  
+import org.hibernate.SessionFactory;  
+import org.hibernate.Transaction;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;  
+public class StoreData {    
+public static void main(String[] args) {    
+     
+    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+      
+    SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+    Session session=factory.openSession();  
+      
+    Transaction t=session.beginTransaction();    
+        
+    Answer ans1=new Answer();    
+    ans1.setAnswername("Java is a programming language");    
+    ans1.setPostedBy("Ravi Malik");    
+        
+    Answer ans2=new Answer();    
+    ans2.setAnswername("Java is a platform");    
+    ans2.setPostedBy("Sudhir Kumar");    
+        
+    Answer ans3=new Answer();    
+    ans3.setAnswername("Servlet is an Interface");    
+    ans3.setPostedBy("Jai Kumar");    
+        
+    Answer ans4=new Answer();    
+    ans4.setAnswername("Servlet is an API");    
+    ans4.setPostedBy("Arun");    
+        
+    ArrayList<Answer> list1=new ArrayList<Answer>();    
+    list1.add(ans1);    
+    list1.add(ans2);    
+        
+    ArrayList<Answer> list2=new ArrayList<Answer>();    
+    list2.add(ans3);    
+    list2.add(ans4);    
+        
+    Question question1=new Question();    
+    question1.setQname("What is Java?");    
+    question1.setAnswers(list1);    
+        
+    Question question2=new Question();    
+    question2.setQname("What is Servlet?");    
+    question2.setAnswers(list2);    
+        
+    session.persist(question1);    
+    session.persist(question2);    
+        
+    t.commit();    
+    session.close();    
+    System.out.println("success");    
+}    
+}    
+
+--------------------------------------------------------------------------------------------------------------
+
+How to fetch the data of List
+==============================
+-> Here, we have used HQL to fetch all the records of Question class including answers. 
+-> In such case, it fetches the data from two tables that are functional dependent. 
+-> Here, we are direct printing the object of answer class, but we have overridden the toString() method in the Answer class returning 
+answername and poster name. So it prints the answer name and postername rather than reference id.
+
+FetchData.java
+==============
+package com.javatpoint;    
+import java.util.*;  
+import javax.persistence.TypedQuery;  
+import org.hibernate.*;  
+import org.hibernate.boot.Metadata;  
+import org.hibernate.boot.MetadataSources;  
+import org.hibernate.boot.registry.StandardServiceRegistry;  
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;  
+    
+public class FetchData {    
+public static void main(String[] args) {    
+        
+    StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+    Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();  
+      
+    SessionFactory factory=meta.getSessionFactoryBuilder().build();  
+    Session session=factory.openSession();  
+        
+    TypedQuery query=session.createQuery("from Question");    
+    List<Question> list=query.getResultList();    
+        
+    Iterator<Question> itr=list.iterator();    
+    while(itr.hasNext()){    
+        Question q=itr.next();    
+        System.out.println("Question Name: "+q.getQname());    
+            
+        //printing answers    
+        List<Answer> list2=q.getAnswers();    
+        Iterator<Answer> itr2=list2.iterator();    
+       while(itr2.hasNext())  
+       {  
+        Answer a=itr2.next();  
+            System.out.println(a.getAnswername()+":"+a.getPostedBy());  
+        }    
+    }  
+    session.close();    
+    System.out.println("success");    
+    }      
+}    
